@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    overflow: hidden
+}
+
+header{
+    text-align: center;
+    color: brown;
+    background-color: black;
+    padding: 2rem 0;
+}
+header p{
+    font-size: 0.5;
+}
+
+/* ! CONTAINER*/
+
+.main-container
+{
+    background-color: black;
+    height: 100vh;
+    
+}
+
+/* Game Container by default */
+.game-container
+{
+    border: 1px white solid;
+    margin: 0 auto;
+    width: 760px;
+    height: 427.5px;
+    border-radius: 5px;
+}
+
+/* container start menu */
+.menu-start{
+    display: none;
+    flex-direction: column;
+    justify-content:flex-end;
+    align-items: center;
+    background-image: url('../img/bgStartGame.jpg');
+    background-position: center;
+    background-size: cover;
+    padding-bottom: 30px;
+
+
+}
+
+/* container Game */
+.in-game{
+    display: none;
+}
+
+/* container end menu */
+.menu-end{
+    display: none;
+}
+
+/* ! Fin container */
+
+/* !BUTTON */
+
+.btn{
+    width: 165px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-start{
+    transition: 
+        box-shadow .3s,
+        background-color .3s, 
+        color .3s
+    ;
+    
+    background-color:  #e74c3c;
+    color: white;
+    border: 1px solid white;
+    box-shadow: 
+        0px 0px 8px white,
+        inset 0px 0px 8px white,
+        0px 0px 16px #ec857b,
+        inset 0px 0px 16px #ec857b,
+        0px 0px 24px #e74c3c,
+        inset 0px 0px 24px #e74c3c
+    
+    ;
+}
+
+.btn-start:hover{
+    
+    background-color:  white;
+    color:  #e74c3c;
+    box-shadow: 
+        0px 0px 24px 5px white,
+        inset 0px 0px 24px 5px white;
+}
+
+/* show */
+.show{
+    display: flex;
+}
