@@ -10,20 +10,31 @@ class Game {
 }
 
 class Event {
-  constructor(title, type, text = [], img = [], son = []) {
+  constructor(title, type, text = "", img = "", song = []) {
     this.title = title;
     this.type = type;
     this.text = text;
     this.img = img;
-    this.son = son;
+    this.song = song;
   }
 }
 
 class Character {
-  constructor(name, img, moveSet, stats) {
-    this.name;
-    this.img;
-    this.moveSet, this.stats;
+  constructor(name, moveSetArray, stats, spritSheet , img = "") {
+
+    this.name = name;
+    // Move Set Management
+    this.moveSet =[] ;
+    moveSetArray.forEach(moveName => {
+        let move = allMove.filter(moveObject => moveObject.name === moveName);
+        this.moveSet.push(move);
+    });
+    this.stats = stats;
+    this.spritSheet = spritSheet;
+    this.img = img;
+    
+    
+    
   }
 }
 
