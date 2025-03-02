@@ -34,6 +34,12 @@ eventsArray = [
     text: "Stay back.This one’s mine.You want me.\n Deathstroke?\n Come and try.",
     img: ["./asset/img/crater.jpg"],
   },
+  {
+    title: "First Battle",
+    type: "fight",
+    text: "deathstroke",
+    img: ["./asset/img/mapFight1.jpg"],
+  },
 ];
 
 let events = [];
@@ -95,6 +101,21 @@ const allCharaters = [
     },
     moveSetArray: ["kick"],
   },
+  {
+    name: "deathstroke",
+    img: "./asset/img/deathstroke.png",
+    spritSheet: "",
+    stats: {
+      hp: 200,
+      atk: 100,
+      def: 100,
+      spAtk: 100,
+      spdef: 100,
+      speed: 150,
+      energy: 300,
+    },
+    moveSetArray: ["kick"],
+  },
 ];
 // CHARACTER END
 
@@ -112,6 +133,20 @@ const allMove = [
   },
 ];
 // MOVE END
+
+// FUNCTION
+function lifeColor(lifeDiff) {
+  switch (true) {
+    case lifeDiff === 1:
+      return "rgb(14, 192, 14)";
+    case lifeDiff <= 0.1:
+      return "red";
+    case lifeDiff <= 0.2:
+      return "orange";
+    case lifeDiff <= 0.49:
+      return "yellow";
+  }
+}
 
 // GAME INITIALIZE
 game = new Game(eventsArray);

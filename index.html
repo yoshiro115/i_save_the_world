@@ -1,40 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>I Save The World</title>
-    <link rel="stylesheet" href="asset/CSS/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="asset/CSS/style.css" />
+  </head>
+  <body>
     <!-- HEAD -->
     <header>
-        <h1>I Save The World</h1>
-        <p>but not alone</p>
+      <h1>I Save The World</h1>
+      <p>but not alone</p>
     </header>
 
     <!-- MAIN CONTAINER FOR THE WALL PAGE -->
     <div class="main-container">
+      <!-- START GAME  -->
 
-    <!-- START GAME  -->
-    
-    <div id="menu-start" class="menu-start  game-container show">
+      <div id="menu-start" class="menu-start game-container show">
         <button id="btn-start" class="btn-start btn">START</button>
-    </div>
-    
-    <!--IN GAME-->
+      </div>
 
-     <div id="menu-game" class="menu-game  game-container">
-        <div id="story">
+      <!--IN GAME-->
+
+      <div id="menu-game" class="menu-game game-container">
+        <div id="story"></div>
+
+        <!-- ! fight event start -->
+        <div id="fight-container" class="fight-container">
+          <div id="life-container" class="life-container">
+            <div id="hero-life-container">
+              <h3 id="hero-life-name"></h3>
+              <div id="hero-life-total" class="life-total">
+                <div id="hero-life-remaining" class="hero-life-remaining"></div>
+              </div>
+            </div>
+            <div id="enemy-life-container">
+              <h3 id="enemy-life-name"></h3>
+              <div id="enemy-life-total" class="life-total">
+                <div
+                  id="enemy-life-remaining"
+                  class="enemy-life-remaining"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div id="fight-stage-container" class="fight-stage-container">
+            <div id="fight-stage-hero"></div>
+            <div id="fight-stage-enemy"></div>
+          </div>
         </div>
-     </div>
+        <div id="fight-menu-container" class="fight-menu-container">
+            <div id="fight-menu-message"></div>
+            <div id="fight-menu-choice">
+                <div id="fight-menu-skill"></div>
+                <div id="fight-menu-character"></div>
+            </div>
+        </div>
+        <!-- ! fight event end -->
+         
+      </div>
 
-     <!-- END GAME -->
+      <!-- END GAME -->
       <div id="menu-end" class="menu-end game-container"></div>
-
     </div>
     <script src="asset/js/class.js"></script>
     <script src="asset/js/data.js"></script>
     <script src="asset/js/script.js"></script>
-</body>
+  </body>
 </html>

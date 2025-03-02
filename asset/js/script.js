@@ -5,9 +5,29 @@ const menuStartElement = document.getElementById("menu-start");
 const menuGameElement = document.getElementById("menu-game");
 const menuEndElement = document.getElementById("menu-end");
 const storyElement = document.getElementById("story");
+const fightContainer = document.getElementById("fight-container");
 
 //  buton Element
 const btnStartElement = document.getElementById("btn-start");
+
+// fight Element
+const lifeContainer = document.getElementById("life-container");
+const heroLifeContainer = document.getElementById("hero-life-container");
+const heroLifeName = document.getElementById("hero-life-name");
+const heroLifetotal = document.getElementById("hero-life-total");
+const heroLifeRemaining = document.getElementById("hero-life-remaining");
+const enemyLifeContainer = document.getElementById("enemy-life-container");
+const enemyLifeName = document.getElementById("enemy-life-name");
+const enemyLifeTotal = document.getElementById("enemy-life-total");
+const enemyLifeRemaining = document.getElementById("enemy-life-remaining");
+const fightStageContainer = document.getElementById("fight-stage-container");
+const fightStageHero = document.getElementById("fight-stage-hero");
+const fightStageEnemy = document.getElementById("fight-stage-enemy");
+const figtMenuContainer = document.getElementById("fight-menu-container");
+const fightMenuMessage = document.getElementById("fight-menu-message");
+const fightMenuChoice = document.getElementById("fight-menu-choice");
+const fightMenuSkill = document.getElementById("fight-menu-skill");
+const fightMenuCharacter = document.getElementById("fight-menu-character");
 
 //initialize some element
 let storyTitle;
@@ -16,6 +36,8 @@ let storyNextBtn;
 let charactersChoiceContainer;
 let characterDivImg;
 let characterImg;
+let heroInBattle;
+let enemy;
 
 // Event
 btnStartElement.addEventListener("click", () => {
@@ -29,7 +51,6 @@ loadEvent();
 //Function
 function loadEvent() {
   switch (game.events[game.indexEvent].type) {
-
     // ! Story Event
     case "story":
       storyElement.classList.add("story-container");
@@ -121,6 +142,7 @@ function loadEvent() {
               selectedCharacter.moveSetArray,
               selectedCharacter.stats,
               selectedCharacter.spritSheet,
+              selectedCharacter.stats.hp,
               selectedCharacter.img
             )
           );
@@ -183,7 +205,74 @@ function loadEvent() {
       break;
 
     //   ! Fight Event
-      case "fight":
+    case "fight":
+      //! create all element START
 
+      // fight div container create and add
+      // fightDivContainer = document.createElement('div');
+      // menuGameElement.append(fightDivContainer);
+
+      // Life container for both player and add inside fightDivContainer
+      // lifeDivContainer = document.createElement('div');
+      // fightDivContainer.append(lifeDivContainer);
+
+      // life container player1 = hero
+      // heroLifeDivContainer = document.createElement('div')
+      // ! create all element END
+
+      // ! add fight class
+      // reinitilize backgroundImage Game element container
+      menuGameElement.style.backgroundImage = "none";
+
+      // fightContainer show and add Background
+      fightContainer.classList.add("show");
+      fightContainer.style.backgroundImage =
+        "url(" + game.events[game.indexEvent].img[0] + ")";
+      // console.log(fightContainer.style.backgroundImage);
+
+      // initialize player
+      if(!heroInBattle){
+        heroInBattle = game.hero[0];
+      }
+  
+      if (!enemy) {
+        let findenemy = allCharaters.filter(
+          (character) => character.name === game.events[game.indexEvent].text
+        );
+        enemy = new Character(
+          findenemy[0].name,
+          findenemy[0].moveSetArray,
+          findenemy[0].stats,
+          findenemy[0].spritSheet,
+          findenemy[0].stats.hp,
+          findenemy[0].img
+        );
+      }
+
+      //NAME AND LIFE HERO
+      heroLifeName.innerText =
+        heroInBattle.name[0].toUpperCase() + heroInBattle.name.slice(1);
+      let heroLifePercentage = heroInBattle.currentHp / heroInBattle.stats.hp;
+      heroLifeRemaining.style.width = heroLifePercentage * 200 + "px";
+      heroLifeRemaining.style.backgroundColor = lifeColor(heroLifePercentage);
+
+      //NAME AND LIFE ENEMY
+      enemyLifeName.innerText =
+        enemy.name[0].toUpperCase() + enemy.name.slice(1);
+      let enemyLifePercentage = enemy.currentHp / enemy.stats.hp;
+      enemyLifeRemaining.style.width = enemyLifePercentage * 200 + "px";
+      enemyLifeRemaining.style.backgroundColor = lifeColor(enemyLifePercentage);
+
+      let fightStageHeroImage = document.createElement('img');
+      fightStageHero.append(fightStageHeroImage);
+      fightStageHeroImage.setAttribute('src', heroInBattle.img)
+
+      let fightStageHeroEnemy = document.createElement('img');
+      fightStageEnemy.append(fightStageHeroEnemy);
+      fightStageHeroEnemy.setAttribute("src", enemy.img);
+
+      
+      
+      break;
   }
 }

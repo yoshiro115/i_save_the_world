@@ -20,7 +20,7 @@ class Event {
 }
 
 class Character {
-  constructor(name, moveSetArray, stats, spritSheet , img = "") {
+  constructor(name, moveSetArray, stats, spritSheet, currentHp , img = "") {
 
     this.name = name;
     // Move Set Management
@@ -31,6 +31,7 @@ class Character {
     });
     this.stats = stats;
     this.spritSheet = spritSheet;
+    this.currentHp = currentHp;
     this.img = img;
     
     
