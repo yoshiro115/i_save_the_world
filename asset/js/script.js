@@ -29,6 +29,8 @@ loadEvent();
 //Function
 function loadEvent() {
   switch (game.events[game.indexEvent].type) {
+
+    // ! Story Event
     case "story":
       storyElement.classList.add("story-container");
       // create History Title and Add
@@ -67,6 +69,7 @@ function loadEvent() {
       });
       break;
 
+    //   ! Character Choice Event
     case "character choice":
       storyElement.classList.add("story-container");
       // create History Title and Add
@@ -131,6 +134,7 @@ function loadEvent() {
       }
       break;
 
+    //   ! Character Talking Event
     case "character talking":
       //   Div container Character Talking initialize
       characterDivImg = document.createElement("div");
@@ -150,7 +154,36 @@ function loadEvent() {
       //   div Talk Initialize
       talkDiv = document.createElement("div");
       menuGameElement.append(talkDiv);
-      
+      talkDiv.classList.add("talking-div");
+
+      // p talk Initialize
+      talkP = document.createElement("p");
+      talkDiv.append(talkP);
+      talkP.innerText = game.events[game.indexEvent].text;
+
+      //   button next Initialize
+      storyNextBtn = document.createElement("button");
+      storyNextBtn.classList.add("btn");
+      storyNextBtn.classList.add("btn-next");
+      talkDiv.append(storyNextBtn);
+      storyNextBtn.innerText = "NEXT";
+
+      storyNextBtn.addEventListener("click", () => {
+        // index Event increase
+        game.indexEvent++;
+        // remove created element
+        characterDivImg.remove();
+        characterImg.remove();
+        talkDiv.remove();
+        talkP.remove();
+        storyNextBtn.remove();
+        // console.log(game.indexEvent);
+        loadEvent();
+      });
       break;
+
+    //   ! Fight Event
+      case "fight":
+
   }
 }

@@ -9,14 +9,31 @@ eventsArray = [
     title: "First Choice",
     type: "character choice",
     text: "The hero stands before you : ",
-    img: ["./asset/img/crater.jpg", "./asset/img/naruto.png", "./asset/img/goku.png", "./asset/img/luffy.png"],
+    img: [
+      "./asset/img/crater.jpg",
+      "./asset/img/naruto.png",
+      "./asset/img/goku.png",
+      "./asset/img/luffy.png",
+    ],
   },
   {
     title: "First talk with the hero",
     type: "character talking",
     text: "Are you hurt? Can you stand? Listen carefully — there’s no time to waste. The planet is breaking apart. Something ancient, something powerful, just woke up beneath us.",
     img: ["./asset/img/crater.jpg"],
-  }
+  },
+  {
+    title: "first enemy",
+    type: "character talking",
+    text: "Well, well… looks like my luck just turned, Of all the poor souls still breathing, I get to deal with you two. Don’t take it personally. Someone paid very well to make sure neither of you leave this place alive. Especially you.",
+    img: ["./asset/img/crater.jpg", "./asset/img/deathstroke.png"],
+  },
+  {
+    title: "I'll take care of it",
+    type: "character talking",
+    text: "Stay back.This one’s mine.You want me.\n Deathstroke?\n Come and try.",
+    img: ["./asset/img/crater.jpg"],
+  },
 ];
 
 let events = [];
@@ -33,69 +50,68 @@ eventsArray.forEach((event) => {
 
 // CHARACTERS INITIALIZE
 const allCharaters = [
-    {
-        name: "naruto",
-        img: "./asset/img/naruto.png",
-        spritSheet: "",
-        stats: {
-            hp: 350,
-            atk: 150,
-            def: 100,
-            spAtk: 250,
-            spdef: 100,
-            speed: 250,
-            energy: 400,
-        },
-        moveSetArray: ["kick"]
+  {
+    name: "naruto",
+    img: "./asset/img/naruto.png",
+    spritSheet: "",
+    stats: {
+      hp: 350,
+      atk: 150,
+      def: 100,
+      spAtk: 250,
+      spdef: 100,
+      speed: 250,
+      energy: 400,
     },
-    {
-        name: "goku",
-        img: "./asset/img/goku.png",
-        spritSheet: "",
-        stats: {
-            hp: 300,
-            atk: 200,
-            def: 120,
-            spAtk: 200,
-            spdef: 120,
-            speed: 270,
-            energy: 200,
-        },
-        moveSetArray: ["kick"]
+    moveSetArray: ["kick"],
+  },
+  {
+    name: "goku",
+    img: "./asset/img/goku.png",
+    spritSheet: "",
+    stats: {
+      hp: 300,
+      atk: 200,
+      def: 120,
+      spAtk: 200,
+      spdef: 120,
+      speed: 270,
+      energy: 200,
     },
-    {
-        name: "luffy",
-        img: "./asset/img/luffy.png",
-        spritSheet: "",
-        stats: {
-            hp: 400,
-            atk: 150,
-            def: 180,
-            spAtk: 100,
-            spdef: 180,
-            speed: 200,
-            energy: 300,
-        },
-        moveSetArray: ["kick"]
+    moveSetArray: ["kick"],
+  },
+  {
+    name: "luffy",
+    img: "./asset/img/luffy.png",
+    spritSheet: "",
+    stats: {
+      hp: 400,
+      atk: 150,
+      def: 180,
+      spAtk: 100,
+      spdef: 180,
+      speed: 200,
+      energy: 300,
     },
-]
+    moveSetArray: ["kick"],
+  },
+];
 // CHARACTER END
 
 //  MOVES INITIALIZE
 const allMove = [
-    {
-        name: "kick",
-        description: "kick the enemy",
-        power: 30,
-        style: "atk",
-        cost: 0,
-        add: {
-            energy: 10,
-        }
-
+  {
+    name: "kick",
+    description: "kick the enemy",
+    power: 30,
+    style: "atk",
+    cost: 0,
+    add: {
+      energy: 10,
     },
-]
-// MOVE END 
+  },
+];
+// MOVE END
 
 // GAME INITIALIZE
 game = new Game(eventsArray);
