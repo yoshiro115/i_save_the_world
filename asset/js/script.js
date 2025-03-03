@@ -1,49 +1,4 @@
-// ! Initialize DOM ELEMENT
-
-// container Element
-const mainContainer = document.getElementById("main-container");
-const menuStartElement = document.getElementById("menu-start");
-const menuGameElement = document.getElementById("menu-game");
-const menuEndElement = document.getElementById("menu-end");
-const storyElement = document.getElementById("story");
-const fightContainer = document.getElementById("fight-container");
-const previous = document.getElementById("previous");
-
-//  buton Element
-const btnStartElement = document.getElementById("btn-start");
-
-// fight Element
-const lifeContainer = document.getElementById("life-container");
-const heroLifeContainer = document.getElementById("hero-life-container");
-const heroLifeName = document.getElementById("hero-life-name");
-const heroLifetotal = document.getElementById("hero-life-total");
-const heroLifeRemaining = document.getElementById("hero-life-remaining");
-const enemyLifeContainer = document.getElementById("enemy-life-container");
-const enemyLifeName = document.getElementById("enemy-life-name");
-const enemyLifeTotal = document.getElementById("enemy-life-total");
-const enemyLifeRemaining = document.getElementById("enemy-life-remaining");
-const fightStageContainer = document.getElementById("fight-stage-container");
-const fightStageHero = document.getElementById("fight-stage-hero");
-const fightStageEnemy = document.getElementById("fight-stage-enemy");
-const figtMenuContainer = document.getElementById("fight-menu-container");
-const fightMenuMessage = document.getElementById("fight-menu-message");
-const fightMenuChoice = document.getElementById("fight-menu-choice");
-const fightMenuSkill = document.getElementById("fight-menu-skill");
-const fightMenuCharacter = document.getElementById("fight-menu-character");
-const fightMenuSkillHero = document.getElementById("fight-menu-skill-hero");
-
-//initialize some element
-let fightMenuBtnPrevious;
-let storyTitle;
-let storyText;
-let storyNextBtn;
-let charactersChoiceContainer;
-let characterDivImg;
-let characterImg;
-let heroInBattle;
-let enemy;
-let infoFight = [];
-
+let battle;
 // Event
 btnStartElement.addEventListener("click", () => {
   menuStartElement.classList.remove("show");
@@ -54,7 +9,7 @@ btnStartElement.addEventListener("click", () => {
 loadEvent();
 
 //Function
-function loadEvent() {
+async function loadEvent() {
   switch (game.events[game.indexEvent].type) {
     // ! Story Event
     case "story":
@@ -236,9 +191,9 @@ function loadEvent() {
       // console.log(fightContainer.style.backgroundImage);
 
       // initialize player
-      if (!heroInBattle) {
-        heroInBattle = game.hero[0];
-      }
+      // if (!heroInBattle) {
+      //   heroInBattle = game.hero[0];
+      // }
 
       if (!enemy) {
         let findenemy = allCharaters.filter(
@@ -254,94 +209,194 @@ function loadEvent() {
         );
       }
 
+      battle = new Battle(
+        game.hero,
+        enemy,
+        heroLifeName,
+        enemyLifeName,
+        heroLifeRemaining,
+        enemyLifeRemaining
+      );
+
       //NAME AND LIFE HERO
       heroLifeName.innerText =
-        heroInBattle.name[0].toUpperCase() + heroInBattle.name.slice(1);
-      let heroLifePercentage = heroInBattle.currentHp / heroInBattle.stats.hp;
-      heroLifeRemaining.style.width = heroLifePercentage * 200 + "px";
-      heroLifeRemaining.style.backgroundColor = lifeColor(heroLifePercentage);
+        battle.currentHero.name[0].toUpperCase() +
+        battle.currentHero.name.slice(1);
+      battle.updateLifeBar(battle.heroLifeRemaining);
+      // let heroLifePercentage = battle.currentHero.currentHp / battle.currentHero.stats.hp;
+      // heroLifeRemaining.style.width = battle.heroLifePercentage * 200 + "px";
+      // heroLifeRemaining.style.backgroundColor = lifeColor(battle.heroLifePercentage);
 
       //NAME AND LIFE ENEMY
       enemyLifeName.innerText =
-        enemy.name[0].toUpperCase() + enemy.name.slice(1);
-      let enemyLifePercentage = enemy.currentHp / enemy.stats.hp;
-      enemyLifeRemaining.style.width = enemyLifePercentage * 200 + "px";
-      enemyLifeRemaining.style.backgroundColor = lifeColor(enemyLifePercentage);
+        battle.enemy.name[0].toUpperCase() + battle.enemy.name.slice(1);
+      battle.updateLifeBar(battle.enemyLifeRemaining);
+      // let enemyLifePercentage = enemy.currentHp / enemy.stats.hp;
+      // enemyLifeRemaining.style.width = battle.enemyLifePercentage * 200 + "px";
+      // enemyLifeRemaining.style.backgroundColor = lifeColor(battle.enemyLifePercentage);
 
       let fightStageHeroImage = document.createElement("img");
       fightStageHero.append(fightStageHeroImage);
-      fightStageHeroImage.setAttribute("src", heroInBattle.img);
+      fightStageHeroImage.setAttribute("src", battle.currentHero.img);
 
       let fightStageHeroEnemy = document.createElement("img");
       fightStageEnemy.append(fightStageHeroEnemy);
-      fightStageHeroEnemy.setAttribute("src", enemy.img);
+      fightStageHeroEnemy.setAttribute("src", battle.enemy.img);
 
       if (fightMenuMessage.innerText === "") {
-        fightMenuMessage.innerText = "deathstroke wants to fight";
+        fightMenuMessage.innerText = battle.message;
         fightMenuMessage.classList.add("show");
-      } else if (infoFight.length !== 0) {
-        infoFight.forEach((info, key) => {
-          setTimeout(() => {
-            if (typeof info === "string") {
-              fightMenuMessage.innerText = info;
-              fightMenuMessage.classList.add("show");
-            } else {
-              console.log(Object.keys(info)[0]);
-              if (Object.keys(info)[0] === "hero") {
-                enemy.currentHp -= info.hero;
-                if(enemy.currentHp <= 0){
-                  enemyLifeRemaining.style.width = 0 + "px"
-                }else{
-                  enemyLifePercentage = enemy.currentHp / enemy.stats.hp;
-                enemyLifeRemaining.style.width =
-                  enemyLifePercentage * 200 + "px";
-                enemyLifeRemaining.style.backgroundColor =
-                  lifeColor(enemyLifePercentage);
-                }
-                
-                // infoFight.shift();
-                // loadEvent();
-              } else {
-                heroInBattle.currentHp -= info.enemy;
-                if(heroInBattle.currentHp<= 0){
-                  heroLifeRemaining.style.width = 0 + "px"
-                }
-                else{
-                  heroLifePercentage =
-                  heroInBattle.currentHp / heroInBattle.stats.hp;
-                heroLifeRemaining.style.width = heroLifePercentage * 200 + "px";
-                heroLifeRemaining.style.backgroundColor =
-                  lifeColor(heroLifePercentage);
-                }
-                
-                // infoFight.shift();
-                // loadEvent();
-              }
-            }
-            // fightMenuMessage.classList.remove("show");
-          }, 1000 * (key));
-        });
-        setTimeout(() => {
-          fightMenuMessage.classList.remove("show");
-          infoFight = [];
-          console.log(!infoFight);
-          if (infoFight.length === 0) {
-            fightMenuChoice.classList.add("show");
-          }
-          loadEvent();
-        }, 4000);
-
-        
       }
+      // else if (infoFight.length !== 0) {
+      //   setTimeout(()=> {
+      //     fightMenuMessage.innerText = infoFight[0];
+      //     fightMenuMessage.classList.add("show");
+      //   }, 50)
+      //   setTimeout(()=> {
+      //           if (Object.keys(infoFight[1])[0] === "hero") {
+      //           enemy.currentHp -= infoFight[1].hero;
+      //           if (enemy.currentHp <= 0) {
+      //             enemyLifeRemaining.style.width = 0 + "px";
+      //             fightMenuMessage.innerText = "you defeat the enemy";
+      //           }else {
+      //                       enemyLifePercentage = enemy.currentHp / enemy.stats.hp;
+      //                       enemyLifeRemaining.style.width =
+      //                         enemyLifePercentage * 200 + "px";
+      //                       enemyLifeRemaining.style.backgroundColor =
+      //                         lifeColor(enemyLifePercentage);
+      //         }
+      //       }else{
+      //         heroInBattle.currentHp -= infoFight[1].enemy;
+      //           if (heroInBattle.currentHp <= 0) {
+      //             heroLifeRemaining.style.width = 0 + "px";
+      //           } else {
+      //             heroLifePercentage =
+      //               heroInBattle.currentHp / heroInBattle.stats.hp;
+      //             heroLifeRemaining.style.width =
+      //               heroLifePercentage * 200 + "px";
+      //             heroLifeRemaining.style.backgroundColor =
+      //               lifeColor(heroLifePercentage);
+      //           }
+      //       }
+      //   }, 1000)
+      //   setTimeout(()=> {
+      //     fightMenuMessage.innerText = infoFight[2];
+      //     fightMenuMessage.classList.add("show");
+      //   }, 2000)
+      //   setTimeout(()=> {
+      //     if (Object.keys(infoFight[3])[0] === "hero") {
+      //     enemy.currentHp -= infoFight[3].hero;
+      //     if (enemy.currentHp <= 0) {
+      //       enemyLifeRemaining.style.width = 0 + "px";
+      //       fightMenuMessage.innerText = "you defeat the enemy";
+      //     }else {
+      //                 enemyLifePercentage = enemy.currentHp / enemy.stats.hp;
+      //                 enemyLifeRemaining.style.width =
+      //                   enemyLifePercentage * 200 + "px";
+      //                 enemyLifeRemaining.style.backgroundColor =
+      //                   lifeColor(enemyLifePercentage);
+      //   }
+      // }else{
+      //   heroInBattle.currentHp -= infoFight[3].enemy;
+      //     if (heroInBattle.currentHp <= 0) {
+      //       heroLifeRemaining.style.width = 0 + "px";
+      //     } else {
+      //       heroLifePercentage =
+      //         heroInBattle.currentHp / heroInBattle.stats.hp;
+      //       heroLifeRemaining.style.width =
+      //         heroLifePercentage * 200 + "px";
+      //       heroLifeRemaining.style.backgroundColor =
+      //         lifeColor(heroLifePercentage);
+      //     }
+      // }
+      // }, 3000)
+      // setTimeout(()=> {
+      //   fightMenuMessage.classList.remove("show");
+      //   infoFight = [];
+      //   fightMenuChoice.classList.add("show");
+      // }, 4000)
+      // for(let i=0; i< infoFight.length; i++){
+      // // infoFight.forEach((info, key) => {
+      //   const test = setTimeout(() => {
+      //     // console.log(infoFight[i])
+      //     if (typeof infoFight[i] === "string") {
+      //       fightMenuMessage.innerText = infoFight[i];
+      //       fightMenuMessage.classList.add("show");
+      //     } else {
+      //       // console.log(Object.keys(infoFight[i])[0]);
+      //       if (Object.keys(infoFight[i])[0] === "hero") {
+      //         enemy.currentHp -= infoFight[i].hero;
+      //         if (enemy.currentHp <= 0) {
+      //           enemyLifeRemaining.style.width = 0 + "px";
+      //           fightMenuMessage.innerText = "you defeat the enemy";
+
+      //         } else {
+      //           enemyLifePercentage = enemy.currentHp / enemy.stats.hp;
+      //           enemyLifeRemaining.style.width =
+      //             enemyLifePercentage * 200 + "px";
+      //           enemyLifeRemaining.style.backgroundColor =
+      //             lifeColor(enemyLifePercentage);
+      //         }
+
+      //         // infoFight.shift();
+      //         // loadEvent();
+      //       } else {
+      //         heroInBattle.currentHp -= infoFight[i].enemy;
+      //         if (heroInBattle.currentHp <= 0) {
+      //           heroLifeRemaining.style.width = 0 + "px";
+      //         } else {
+      //           heroLifePercentage =
+      //             heroInBattle.currentHp / heroInBattle.stats.hp;
+      //           heroLifeRemaining.style.width =
+      //             heroLifePercentage * 200 + "px";
+      //           heroLifeRemaining.style.backgroundColor =
+      //             lifeColor(heroLifePercentage);
+      //         }
+
+      //         // infoFight.shift();
+      //         // loadEvent();
+      //       }
+      //     }
+      //     // fightMenuMessage.classList.remove("show");
+      //   }, 1000 * i);
+
+      //   if (
+      //     enemy.currentHp <= 0
+      //   ) {
+
+      //     clearTimeout(test)
+      //     // break;
+      //     setTimeout(() => {
+      //       enemyLifeName.remove();
+      //       enemyLifeRemaining.remove();
+      //       fightStageHeroEnemy.remove();
+      //     }, 1000);
+      //   }
+      // };
+
+      //   setTimeout(() => {
+      //     fightMenuMessage.classList.remove("show");
+      //     infoFight = [];
+      //     // console.log(!infoFight);
+      //     if (infoFight.length === 0) {
+      //       fightMenuChoice.classList.add("show");
+      //     }
+      //     loadEvent();
+      //   }, 4000);
+
+      // }
 
       fightMenuMessage.addEventListener("click", () => {
-        if (infoFight.length !== 0) {
-          // fightMenuMessage.classList.remove("show");
-          loadEvent();
-        } else {
-          fightMenuMessage.classList.remove("show");
-          fightMenuChoice.classList.add("show");
+        // if (infoFight.length !== 0) {
+        //   // fightMenuMessage.classList.remove("show");
+        //   loadEvent();
+        // } else {
+        if (battle.winner) {
+          fightMenuMessage.innerText = `${battle.winner.name.toUpperCase()} WIN`;
         }
+        fightMenuMessage.classList.remove("show");
+        fightMenuChoice.classList.add("show");
+        // }
       });
 
       fightMenuSkill.addEventListener("click", () => {
@@ -350,26 +405,53 @@ function loadEvent() {
         // console.log( heroInBattle.moveSet)
         // for(i=0; i<4; i++){
         if (
-          fightMenuSkillHero.childNodes.length !== heroInBattle.moveSet.length
+          fightMenuSkillHero.childNodes.length !==
+          battle.currentHero.moveSet.length
         ) {
-          heroInBattle.moveSet.forEach((skill) => {
+          battle.currentHero.moveSet.forEach((skill) => {
             // console.log(skill)
-            const oneSkill = document.createElement("div");
+            const oneSkill = document.createElement("button");
             fightMenuSkillHero.append(oneSkill);
             oneSkill.classList.add("fight-menu-skill-hero-one");
             // if(heroInBattle.moveSet[i]){
             oneSkill.innerText = skill.name;
             // }
             oneSkill.addEventListener("click", () => {
-              infoFight = [
-                "hero attack enemy",
-                { hero: 150 },
-                "enemy attack hero",
-                { enemy: 30 },
-              ];
               fightMenuSkillHero.classList.remove("show");
               fightMenuBtnPrevious.remove();
-              loadEvent();
+              oneSkill.remove();
+              fightMenuMessage.innerText = battle.playTurnFirst(skill);
+              fightMenuMessage.classList.add("show");
+              setTimeout(() => {
+                battle.updateLifeBar(battle.heroLifeRemaining);
+                battle.updateLifeBar(battle.enemyLifeRemaining);
+              }, 1000);
+
+              if (battle.enemy.currentHp) {
+                if (battle.currentHero.currentHp) {
+                  setTimeout(() => {
+                    fightMenuMessage.innerText = battle.playTurnSecond(skill);
+                  }, 2000);
+                  setTimeout(() => {
+                    battle.updateLifeBar(battle.heroLifeRemaining);
+                    battle.updateLifeBar(battle.enemyLifeRemaining);
+                    fightMenuMessage.classList.remove("show");
+                    fightMenuChoice.classList.add("show");
+                  }, 3000);
+                } else {
+                  battle.winner = battle.ennemy;
+                  setTimeout(() => {
+                    fightMenuMessage.innerText = `${battle.winner.name.toUpperCase()} WIN`;
+                  }, 2000);
+                }
+              } else {
+                battle.winner = battle.currentHero;
+                setTimeout(() => {
+                  fightMenuMessage.innerText = `${battle.winner.name.toUpperCase()} WIN`;
+                }, 2000);
+              }
+              console.log(battle.winner);
+              // loadEvent();
             });
           });
         }

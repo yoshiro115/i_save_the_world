@@ -148,6 +148,52 @@ function lifeColor(lifeDiff) {
   }
 }
 
+// ! Initialize DOM ELEMENT
+
+// container Element
+const mainContainer = document.getElementById("main-container");
+const menuStartElement = document.getElementById("menu-start");
+const menuGameElement = document.getElementById("menu-game");
+const menuEndElement = document.getElementById("menu-end");
+const storyElement = document.getElementById("story");
+const fightContainer = document.getElementById("fight-container");
+const previous = document.getElementById("previous");
+
+//  buton Element
+const btnStartElement = document.getElementById("btn-start");
+
+// fight Element
+const lifeContainer = document.getElementById("life-container");
+const heroLifeContainer = document.getElementById("hero-life-container");
+const heroLifeName = document.getElementById("hero-life-name");
+const heroLifetotal = document.getElementById("hero-life-total");
+const heroLifeRemaining = document.getElementById("hero-life-remaining");
+const enemyLifeContainer = document.getElementById("enemy-life-container");
+const enemyLifeName = document.getElementById("enemy-life-name");
+const enemyLifeTotal = document.getElementById("enemy-life-total");
+const enemyLifeRemaining = document.getElementById("enemy-life-remaining");
+const fightStageContainer = document.getElementById("fight-stage-container");
+const fightStageHero = document.getElementById("fight-stage-hero");
+const fightStageEnemy = document.getElementById("fight-stage-enemy");
+const figtMenuContainer = document.getElementById("fight-menu-container");
+const fightMenuMessage = document.getElementById("fight-menu-message");
+const fightMenuChoice = document.getElementById("fight-menu-choice");
+const fightMenuSkill = document.getElementById("fight-menu-skill");
+const fightMenuCharacter = document.getElementById("fight-menu-character");
+const fightMenuSkillHero = document.getElementById("fight-menu-skill-hero");
+
+//initialize some element
+let fightMenuBtnPrevious;
+let storyTitle;
+let storyText;
+let storyNextBtn;
+let charactersChoiceContainer;
+let characterDivImg;
+let characterImg;
+let heroInBattle;
+let enemy;
+let infoFight = [];
+
 // GAME INITIALIZE
 game = new Game(eventsArray);
 console.log(game);
