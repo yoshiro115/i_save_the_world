@@ -2,7 +2,7 @@ class Game {
   constructor(events) {
     this.events = events;
   }
-  life = 2;
+  life = 1;
   roundWin = 0;
   indexEvent = 0;
   hero = [];
@@ -103,7 +103,9 @@ class Battle {
         // console.log(this.enemy, this.currentHero, skillUse)
       } else {
         this.enemyPlay = 1;
-        let randomIndexSkill = Math.random() * this.enemy.moveSet.length - 1;
+        let randomIndexSkill = Math.ceil(
+          Math.random() * this.enemy.moveSet.length - 1
+        );
         this.message = this.attack(
           this.enemy,
           this.currentHero,
@@ -165,6 +167,7 @@ class BattleEvent {
   }
 
   kill() {
+    // console.log(this.skillUse)
     if (
       this.enemy.currentHp -
         this.skillUse.power * (this.caster.stats[this.skillUse.style] / 100) <=

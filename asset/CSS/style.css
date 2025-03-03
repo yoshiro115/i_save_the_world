@@ -66,12 +66,21 @@ h2 {
 /* ! CONTAINER*/
 
 .main-container {
+  
   background-color: black;
   height: 100vh;
+  z-index: 6;
 }
-
+.Kill-life{
+  display: none;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 760px;
+}
 /* Game Container by default */
 .game-container {
+  /* position:relative;
+  z-index: 10; */
   border: 1px white solid;
   margin: 0 auto;
   width: 760px;
@@ -80,6 +89,7 @@ h2 {
   background-position: center;
   background-size: cover;
   overflow: hidden;
+  
 }
 
 /* container start menu */
@@ -102,6 +112,18 @@ h2 {
 /* container end menu */
 .menu-end {
   display: none;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  row-gap: 130px;
+  
+}
+.menu-end h2{
+  font-size: 4rem;
+  color: #e74c3c;
+}
+.menu-end button{
+  margin-bottom: 20px;
 }
 
 /*  */
@@ -287,7 +309,7 @@ h2 {
   background-image: url('../img/menuFight.jpg');
   background-size: cover;
   background-position: center;
-  display: flex;
+  display: none;
   color: white;
   font-size: 1.2rem;
   font-weight: 500;
@@ -354,6 +376,23 @@ h2 {
   width: 760px;
   height: 427.5px;
 }
+/* #noise{
+  position: absolute;
+  z-index: 0;      
+  inset: -2000%;
+  background-image: url("../img/noise1.jpg");
+  opacity: 30%;
+  animation: shift 0.2s linear infinite both;
+}
+@keyframes shift {
+  0% {
+      transform: translateX(10%) translateY(10%);
+  }
+
+  100% {
+      transform: translateX(-10%) translateY(-10%);
+  }
+} */
 /* ! Fight Event End */
 
 /* show */

@@ -3,13 +3,20 @@ let battle;
 btnStartElement.addEventListener("click", () => {
   menuStartElement.classList.remove("show");
   menuGameElement.classList.add("show");
+  killLife.classList.add("show");
 });
 
 // setInterval(loadEvent(),1000)
 loadEvent();
 
 //Function
-async function loadEvent() {
+function loadEvent() {
+  killLife.innerHTML = `<h2>LIFE : ${game.life}</h2><h2>KILL : ${game.roundWin}</h2>`
+  if(game.life === 0){
+    menuGameElement.classList.remove("show");
+    menuEndElement.classList.add("show");
+    
+  }
   switch (game.events[game.indexEvent].type) {
     // ! Story Event
     case "story":
@@ -182,10 +189,11 @@ async function loadEvent() {
 
       // ! add fight class
       // reinitilize backgroundImage Game element container
-      menuGameElement.style.backgroundImage = "none";
+      // menuGameElement.style.backgroundImage = "none";
 
       // fightContainer show and add Background
       fightContainer.classList.add("show");
+      figtMenuContainer.classList.add("show");
       fightContainer.style.backgroundImage =
         "url(" + game.events[game.indexEvent].img[0] + ")";
       // console.log(fightContainer.style.backgroundImage);
@@ -243,10 +251,9 @@ async function loadEvent() {
       fightStageEnemy.append(fightStageHeroEnemy);
       fightStageHeroEnemy.setAttribute("src", battle.enemy.img);
 
-      if (fightMenuMessage.innerText === "") {
-        fightMenuMessage.innerText = battle.message;
-        fightMenuMessage.classList.add("show");
-      }
+      fightMenuMessage.innerText = battle.message;
+      fightMenuMessage.classList.add("show");
+
       // else if (infoFight.length !== 0) {
       //   setTimeout(()=> {
       //     fightMenuMessage.innerText = infoFight[0];
@@ -386,18 +393,21 @@ async function loadEvent() {
 
       // }
 
-      fightMenuMessage.addEventListener("click", () => {
-        // if (infoFight.length !== 0) {
-        //   // fightMenuMessage.classList.remove("show");
-        //   loadEvent();
-        // } else {
-        if (battle.winner) {
-          fightMenuMessage.innerText = `${battle.winner.name.toUpperCase()} WIN`;
-        }
+      // fightMenuMessage.addEventListener("click", () => {
+      // if (infoFight.length !== 0) {
+      //   // fightMenuMessage.classList.remove("show");
+      //   loadEvent();
+      // } else {
+      // if (battle.winner) {
+      //   fightMenuMessage.innerText = `${battle.winner.name.toUpperCase()} WIN`;
+      // }
+      setTimeout(() => {
         fightMenuMessage.classList.remove("show");
         fightMenuChoice.classList.add("show");
-        // }
-      });
+      }, 1500);
+
+      // }
+      // });
 
       fightMenuSkill.addEventListener("click", () => {
         fightMenuChoice.classList.remove("show");
@@ -439,18 +449,45 @@ async function loadEvent() {
                     fightMenuChoice.classList.add("show");
                   }, 3000);
                 } else {
-                  battle.winner = battle.ennemy;
-                  setTimeout(() => {
-                    fightMenuMessage.innerText = `${battle.winner.name.toUpperCase()} WIN`;
-                  }, 2000);
+                  
+                  battle.winner = battle.enemy;
                 }
               } else {
                 battle.winner = battle.currentHero;
-                setTimeout(() => {
-                  fightMenuMessage.innerText = `${battle.winner.name.toUpperCase()} WIN`;
-                }, 2000);
               }
-              console.log(battle.winner);
+              // console.log(battle.winner)
+              if (battle.winner) {
+                if (battle.winner.name === battle.currentHero.name) {
+                  setTimeout(() => {
+                    fightMenuMessage.innerText = `${battle.winner.name.toUpperCase()} WIN`;
+                  }, 2000);
+                  setTimeout(() => {
+                    game.roundWin++;
+                    game.indexEvent++;
+                    figtMenuContainer.classList.remove("show");
+                    fightContainer.classList.remove("show")
+                    fightMenuMessage.classList.remove("show")
+                    fightMenuChoice.classList.remove("show")
+                    fightMenuSkillHero.classList.remove("show");
+                    loadEvent();
+                  }, 4000);
+                } else {
+                  setTimeout(() => {
+                    fightMenuMessage.innerText = `BOUUUH T'ES NUUUUUL`;
+                  }, 2000);
+                  setTimeout(() => {
+                    game.life--;
+                    game.indexEvent++;
+                    figtMenuContainer.classList.remove("show");
+                    fightContainer.classList.remove("show")
+                    fightMenuMessage.classList.remove("show")
+                    fightMenuChoice.classList.remove("show")
+                    fightMenuSkillHero.classList.remove("show");
+                    loadEvent();
+                  }, 4000);
+                }
+              }
+              // console.log(battle.winner);
               // loadEvent();
             });
           });

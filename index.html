@@ -16,13 +16,14 @@
     <!-- MAIN CONTAINER FOR THE WALL PAGE -->
     <div id="main-container" class="main-container">
       <!-- START GAME  -->
-
+      
       <div id="menu-start" class="menu-start game-container show">
         <button id="btn-start" class="btn-start btn">START</button>
       </div>
 
       <!--IN GAME-->
-
+      <div id="Kill-life" class="Kill-life">
+      </div>
       <div id="menu-game" class="menu-game game-container">
         <div id="story"></div>
 
@@ -63,7 +64,11 @@
       </div>
 
       <!-- END GAME -->
-      <div id="menu-end" class="menu-end game-container"></div>
+      <div id="menu-end" class="menu-end game-container">
+        <h2>YOU ARE DEAD</h2>
+        <button id="reset" class="btn btn-restart">RESET</button>
+        <!-- <div id="noise"></div> -->
+      </div>
       <div id="previous" class="previous"></div>
     </div>
     <script src="asset/js/class.js"></script>

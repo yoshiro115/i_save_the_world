@@ -40,6 +40,12 @@ eventsArray = [
     text: "deathstroke",
     img: ["./asset/img/mapFight1.jpg"],
   },
+  {
+    title: "Win The First Fight",
+    type: "character talking",
+    text: "Super Easy like always. I'm so hungry. Let's take a break to regain our strength",
+    img: ["./asset/img/crater.jpg"],
+  }
 ];
 
 let events = [];
@@ -107,11 +113,11 @@ const allCharaters = [
     spritSheet: "",
     stats: {
       hp: 200,
-      atk: 100,
+      atk: 300,
       def: 100,
       spAtk: 100,
       spdef: 100,
-      speed: 150,
+      speed: 300,
       energy: 300,
     },
     moveSetArray: ["kick"],
@@ -152,6 +158,7 @@ function lifeColor(lifeDiff) {
 
 // container Element
 const mainContainer = document.getElementById("main-container");
+const killLife = document.getElementById("Kill-life");
 const menuStartElement = document.getElementById("menu-start");
 const menuGameElement = document.getElementById("menu-game");
 const menuEndElement = document.getElementById("menu-end");
