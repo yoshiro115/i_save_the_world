@@ -1,11 +1,13 @@
 // ! Initialize DOM ELEMENT
 
 // container Element
+const mainContainer = document.getElementById("main-container");
 const menuStartElement = document.getElementById("menu-start");
 const menuGameElement = document.getElementById("menu-game");
 const menuEndElement = document.getElementById("menu-end");
 const storyElement = document.getElementById("story");
 const fightContainer = document.getElementById("fight-container");
+const previous = document.getElementById("previous");
 
 //  buton Element
 const btnStartElement = document.getElementById("btn-start");
@@ -31,6 +33,7 @@ const fightMenuCharacter = document.getElementById("fight-menu-character");
 const fightMenuSkillHero = document.getElementById("fight-menu-skill-hero");
 
 //initialize some element
+let fightMenuBtnPrevious;
 let storyTitle;
 let storyText;
 let storyNextBtn;
@@ -39,7 +42,7 @@ let characterDivImg;
 let characterImg;
 let heroInBattle;
 let enemy;
-let messageFight = [];
+let infoFight = [];
 
 // Event
 btnStartElement.addEventListener("click", () => {
@@ -276,29 +279,114 @@ function loadEvent() {
       if (fightMenuMessage.innerText === "") {
         fightMenuMessage.innerText = "deathstroke wants to fight";
         fightMenuMessage.classList.add("show");
+      } else if (infoFight.length !== 0) {
+        infoFight.forEach((info, key) => {
+          setTimeout(() => {
+            if (typeof info === "string") {
+              fightMenuMessage.innerText = info;
+              fightMenuMessage.classList.add("show");
+            } else {
+              console.log(Object.keys(info)[0]);
+              if (Object.keys(info)[0] === "hero") {
+                enemy.currentHp -= info.hero;
+                if(enemy.currentHp <= 0){
+                  enemyLifeRemaining.style.width = 0 + "px"
+                }else{
+                  enemyLifePercentage = enemy.currentHp / enemy.stats.hp;
+                enemyLifeRemaining.style.width =
+                  enemyLifePercentage * 200 + "px";
+                enemyLifeRemaining.style.backgroundColor =
+                  lifeColor(enemyLifePercentage);
+                }
+                
+                // infoFight.shift();
+                // loadEvent();
+              } else {
+                heroInBattle.currentHp -= info.enemy;
+                if(heroInBattle.currentHp<= 0){
+                  heroLifeRemaining.style.width = 0 + "px"
+                }
+                else{
+                  heroLifePercentage =
+                  heroInBattle.currentHp / heroInBattle.stats.hp;
+                heroLifeRemaining.style.width = heroLifePercentage * 200 + "px";
+                heroLifeRemaining.style.backgroundColor =
+                  lifeColor(heroLifePercentage);
+                }
+                
+                // infoFight.shift();
+                // loadEvent();
+              }
+            }
+            // fightMenuMessage.classList.remove("show");
+          }, 1000 * (key));
+        });
+        setTimeout(() => {
+          fightMenuMessage.classList.remove("show");
+          infoFight = [];
+          console.log(!infoFight);
+          if (infoFight.length === 0) {
+            fightMenuChoice.classList.add("show");
+          }
+          loadEvent();
+        }, 4000);
+
+        
       }
 
       fightMenuMessage.addEventListener("click", () => {
-        fightMenuMessage.classList.remove("show");
-        fightMenuChoice.classList.add("show");
+        if (infoFight.length !== 0) {
+          // fightMenuMessage.classList.remove("show");
+          loadEvent();
+        } else {
+          fightMenuMessage.classList.remove("show");
+          fightMenuChoice.classList.add("show");
+        }
       });
 
       fightMenuSkill.addEventListener("click", () => {
         fightMenuChoice.classList.remove("show");
         fightMenuSkillHero.classList.add("show");
         // console.log( heroInBattle.moveSet)
-        heroInBattle.moveSet.forEach((skill) => {
-          // console.log(skill)
-          const oneSkill = document.createElement("div");
-          fightMenuSkillHero.append(oneSkill);
-          oneSkill.classList.add("fight-menu-skill-hero-one");
-          oneSkill.innerText = skill.name;
-        });
-        let fightMenuBtnPrevious = document.createElement('button');
-        fightMenuSkillHero.append(fightMenuBtnPrevious);
-        fightMenuBtnPrevious.classList.add("btn-previous")
-        fightMenuBtnPrevious.classList.add("btn")
-        fightMenuBtnPrevious.innerText = "PREVIOUS"
+        // for(i=0; i<4; i++){
+        if (
+          fightMenuSkillHero.childNodes.length !== heroInBattle.moveSet.length
+        ) {
+          heroInBattle.moveSet.forEach((skill) => {
+            // console.log(skill)
+            const oneSkill = document.createElement("div");
+            fightMenuSkillHero.append(oneSkill);
+            oneSkill.classList.add("fight-menu-skill-hero-one");
+            // if(heroInBattle.moveSet[i]){
+            oneSkill.innerText = skill.name;
+            // }
+            oneSkill.addEventListener("click", () => {
+              infoFight = [
+                "hero attack enemy",
+                { hero: 150 },
+                "enemy attack hero",
+                { enemy: 30 },
+              ];
+              fightMenuSkillHero.classList.remove("show");
+              fightMenuBtnPrevious.remove();
+              loadEvent();
+            });
+          });
+        }
+
+        // console.log(previous.no);
+        if (previous.childNodes.length === 0) {
+          fightMenuBtnPrevious = document.createElement("button");
+          previous.append(fightMenuBtnPrevious);
+          fightMenuBtnPrevious.classList.add("btn-previous");
+          fightMenuBtnPrevious.classList.add("btn");
+          fightMenuBtnPrevious.innerText = "PREVIOUS";
+          fightMenuBtnPrevious.addEventListener("click", () => {
+            fightMenuChoice.classList.add("show");
+            fightMenuSkillHero.classList.remove("show");
+            fightMenuBtnPrevious.remove();
+          });
+        }
       });
       // if(fightMenuMessage)
 
