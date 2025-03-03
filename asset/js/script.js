@@ -28,6 +28,7 @@ const fightMenuMessage = document.getElementById("fight-menu-message");
 const fightMenuChoice = document.getElementById("fight-menu-choice");
 const fightMenuSkill = document.getElementById("fight-menu-skill");
 const fightMenuCharacter = document.getElementById("fight-menu-character");
+const fightMenuSkillHero = document.getElementById("fight-menu-skill-hero");
 
 //initialize some element
 let storyTitle;
@@ -38,6 +39,7 @@ let characterDivImg;
 let characterImg;
 let heroInBattle;
 let enemy;
+let messageFight = [];
 
 // Event
 btnStartElement.addEventListener("click", () => {
@@ -231,10 +233,10 @@ function loadEvent() {
       // console.log(fightContainer.style.backgroundImage);
 
       // initialize player
-      if(!heroInBattle){
+      if (!heroInBattle) {
         heroInBattle = game.hero[0];
       }
-  
+
       if (!enemy) {
         let findenemy = allCharaters.filter(
           (character) => character.name === game.events[game.indexEvent].text
@@ -263,16 +265,43 @@ function loadEvent() {
       enemyLifeRemaining.style.width = enemyLifePercentage * 200 + "px";
       enemyLifeRemaining.style.backgroundColor = lifeColor(enemyLifePercentage);
 
-      let fightStageHeroImage = document.createElement('img');
+      let fightStageHeroImage = document.createElement("img");
       fightStageHero.append(fightStageHeroImage);
-      fightStageHeroImage.setAttribute('src', heroInBattle.img)
+      fightStageHeroImage.setAttribute("src", heroInBattle.img);
 
-      let fightStageHeroEnemy = document.createElement('img');
+      let fightStageHeroEnemy = document.createElement("img");
       fightStageEnemy.append(fightStageHeroEnemy);
       fightStageHeroEnemy.setAttribute("src", enemy.img);
 
-      
-      
+      if (fightMenuMessage.innerText === "") {
+        fightMenuMessage.innerText = "deathstroke wants to fight";
+        fightMenuMessage.classList.add("show");
+      }
+
+      fightMenuMessage.addEventListener("click", () => {
+        fightMenuMessage.classList.remove("show");
+        fightMenuChoice.classList.add("show");
+      });
+
+      fightMenuSkill.addEventListener("click", () => {
+        fightMenuChoice.classList.remove("show");
+        fightMenuSkillHero.classList.add("show");
+        // console.log( heroInBattle.moveSet)
+        heroInBattle.moveSet.forEach((skill) => {
+          // console.log(skill)
+          const oneSkill = document.createElement("div");
+          fightMenuSkillHero.append(oneSkill);
+          oneSkill.classList.add("fight-menu-skill-hero-one");
+          oneSkill.innerText = skill.name;
+        });
+        let fightMenuBtnPrevious = document.createElement('button');
+        fightMenuSkillHero.append(fightMenuBtnPrevious);
+        fightMenuBtnPrevious.classList.add("btn-previous")
+        fightMenuBtnPrevious.classList.add("btn")
+        fightMenuBtnPrevious.innerText = "PREVIOUS"
+      });
+      // if(fightMenuMessage)
+
       break;
   }
 }

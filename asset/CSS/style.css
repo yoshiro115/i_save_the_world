@@ -151,7 +151,7 @@ h2 {
   box-shadow: 0px 0px 24px 5px white, inset 0px 0px 24px 5px white;
 }
 
-.btn-next {
+.btn-next, .btn-previous {
   transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
   background-color: #252525;
   color: white;
@@ -161,7 +161,7 @@ h2 {
   margin: 20px;
 }
 
-.btn-next:hover {
+.btn-next:hover, .btn-previous:hover {
   background-color: #050505;
   color: rgb(206, 206, 206);
   border: 1px solid #808080;
@@ -288,6 +288,62 @@ h2 {
   background-size: cover;
   background-position: center;
   display: flex;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.fight-menu-message{
+  display:none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+}
+.fight-menu-choice{
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  
+}
+.fight-menu-choice div{
+  text-align: center;
+  line-height: 127px;
+  border: 2px solid white;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+
+}
+
+.fight-menu-choice div:hover{
+  background-color: rgba(138, 134, 134, 0.466);
+}
+
+.fight-menu-skill-hero{
+  display: none;
+  flex-wrap:wrap;
+  width: 100%;
+  height: 100%;
+ 
+  
+}
+
+.fight-menu-skill-hero-one{
+  min-width:24%;
+  max-height: 24%;
+  flex-grow:1;
+  border: 1px white solid;
+  border-radius: 2px;
+  text-align: center;
+  cursor: pointer;
+}
+.fight-menu-skill-hero-one:hover{
+  background-color: rgba(0, 0, 0, 0.466);
+}
+.btn-previous{
+  position: absolute;
 }
 /* ! Fight Event End */
 
@@ -295,3 +351,5 @@ h2 {
 .show {
   display: flex;
 }
+
+/* hide */

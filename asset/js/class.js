@@ -27,7 +27,7 @@ class Character {
     this.moveSet =[] ;
     moveSetArray.forEach(moveName => {
         let move = allMove.filter(moveObject => moveObject.name === moveName);
-        this.moveSet.push(move);
+        this.moveSet.push(move[0]);
     });
     this.stats = stats;
     this.spritSheet = spritSheet;
