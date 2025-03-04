@@ -23,7 +23,12 @@ h3,
 p {
   font-family: "Caveat", serif;
 }
-
+.story-p span, .talking-div p span, .fight-menu-message span{
+  opacity: 0;
+}
+.story-p span.revealed, .talking-div p span.revealed, .fight-menu-message span.revealed{
+  opacity: 1;
+}
 /* font end */
 
 /* header start */

@@ -1,12 +1,28 @@
 class Game {
   constructor(events) {
     this.events = events;
+    this.life = 1;
+    this.roundWin = 0;
+    this.indexEvent = 0;
+    this.hero = [];
+    this.item = [];
+    this.mainTheme = new Audio("asset/audio/Zoltraak.mp3")
+    this.mainTheme.volume = 0.05;
   }
-  life = 1;
-  roundWin = 0;
-  indexEvent = 0;
-  hero = [];
-  item = [];
+  
+
+  stat() {
+    return this.indexEvent > 0
+      ? `<h2>LIFE : ${game.life}</h2><h2>KILL : ${game.roundWin}</h2>`
+      : "";
+  }
+  reset() {
+    this.life = 1;
+    this.roundWin = 0;
+    this.indexEvent = 0;
+    this.hero.length = 0;
+    this.item.length = 0;
+  }
 }
 
 class Event {
@@ -20,7 +36,7 @@ class Event {
 }
 
 class Character {
-  constructor(name, moveSetArray, stats, spritSheet, currentHp, img = "") {
+  constructor(name, moveSetArray, stats, spritSheet, currentHp, img = "", song = []) {
     this.name = name;
     // Move Set Management
     this.moveSet = [];
@@ -32,6 +48,10 @@ class Character {
     this.spritSheet = spritSheet;
     this.currentHp = currentHp;
     this.img = img;
+    this.song = song
+    this.songName = new Audio(this.song[0]);
+    this.songName.volume = 0.5;
+
   }
 }
 
@@ -140,9 +160,23 @@ class Battle {
     }
   }
 
- attack(caster, enemy, skillUse) {
+  checkBattle(){
+    if(this.currentHero.currentHp && this.enemy.currentHp){
+      return true
+    }else{
+      if(this.currentHero.currentHp)
+      {
+        this.winner = this.currentHero
+      }else{
+        this.winner = this.enemy
+      }
+      return false;
+    }
+  }
+
+  attack(caster, enemy, skillUse) {
     let casterAttack = new BattleEvent(caster, enemy, skillUse);
-    console.log(casterAttack.update());
+    // console.log(casterAttack.update());
     return casterAttack.update();
   }
 }
@@ -167,7 +201,8 @@ class BattleEvent {
   }
 
   kill() {
-    // console.log(this.skillUse)
+    // console.log(this.enemy.currentHp -
+    //   this.skillUse.power * (this.caster.stats[this.skillUse.style] / 100))
     if (
       this.enemy.currentHp -
         this.skillUse.power * (this.caster.stats[this.skillUse.style] / 100) <=

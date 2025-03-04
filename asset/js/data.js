@@ -75,7 +75,8 @@ const allCharaters = [
       speed: 250,
       energy: 400,
     },
-    moveSetArray: ["kick"],
+    moveSetArray: ["Kick","Rasengan"],
+    song: ["asset/audio/naruto.mp3"]
   },
   {
     name: "goku",
@@ -90,7 +91,8 @@ const allCharaters = [
       speed: 270,
       energy: 200,
     },
-    moveSetArray: ["kick"],
+    moveSetArray: ["Kick","Kamehameha"],
+    song: ["asset/audio/goku.mp3"]
   },
   {
     name: "luffy",
@@ -105,7 +107,8 @@ const allCharaters = [
       speed: 200,
       energy: 300,
     },
-    moveSetArray: ["kick"],
+    moveSetArray: ["Kick","Gomu Gomu no Pistol"],
+    song: ["asset/audio/luffy.mp3"]
   },
   {
     name: "deathstroke",
@@ -115,12 +118,13 @@ const allCharaters = [
       hp: 200,
       atk: 300,
       def: 100,
-      spAtk: 100,
+      spAtk: 300,
       spdef: 100,
-      speed: 300,
+      speed: 210,
       energy: 300,
     },
-    moveSetArray: ["kick"],
+    moveSetArray: ["Kick","bullet burst"],
+    song: ["asset/audio/deathstroke.mp3"]
   },
 ];
 // CHARACTER END
@@ -128,7 +132,7 @@ const allCharaters = [
 //  MOVES INITIALIZE
 const allMove = [
   {
-    name: "kick",
+    name: "Kick",
     description: "kick the enemy",
     power: 30,
     style: "atk",
@@ -136,6 +140,38 @@ const allMove = [
     add: {
       energy: 10,
     },
+  },
+  {
+    name: "Kamehameha",
+    description: "Destructive turtle wave",
+    power: 70,
+    style: "spAtk",
+    cost: 150,
+    add: {},
+  },
+  {
+    name: "Rasengan",
+    description: "The Swirling Orb",
+    power: 70,
+    style: "spAtk",
+    cost: 150,
+    add: {},
+  },
+  {
+    name: "Gomu Gomu no Pistol",
+    description: "a punch as powerful as a pistol bullet",
+    power: 90,
+    style: "atk",
+    cost: 100,
+    add: {},
+  },
+  {
+    name: "bullet burst",
+    description: "a destructive burst of M16",
+    power: 80,
+    style: "spAtk",
+    cost: 100,
+    add: {},
   },
 ];
 // MOVE END
@@ -168,6 +204,7 @@ const previous = document.getElementById("previous");
 
 //  buton Element
 const btnStartElement = document.getElementById("btn-start");
+const btnResetElement = document.getElementById("btn-reset");
 
 // fight Element
 const lifeContainer = document.getElementById("life-container");
@@ -187,7 +224,7 @@ const fightMenuMessage = document.getElementById("fight-menu-message");
 const fightMenuChoice = document.getElementById("fight-menu-choice");
 const fightMenuSkill = document.getElementById("fight-menu-skill");
 const fightMenuCharacter = document.getElementById("fight-menu-character");
-const fightMenuSkillHero = document.getElementById("fight-menu-skill-hero");
+// const fightMenuSkillHero = document.getElementById("fight-menu-skill-hero");
 
 //initialize some element
 let fightMenuBtnPrevious;
@@ -200,7 +237,9 @@ let characterImg;
 let heroInBattle;
 let enemy;
 let infoFight = [];
+let battle;
+let revealingText;
 
 // GAME INITIALIZE
-game = new Game(eventsArray);
-console.log(game);
+// game = new Game(eventsArray);
+// console.log(game);
