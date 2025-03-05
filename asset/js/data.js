@@ -108,7 +108,7 @@ const allCharaters = [
       speed: 200,
       energy: 300,
     },
-    moveSetArray: ["Kick","Gomu Gomu no Pistol"],
+    moveSetArray: ["Kick","Gatling"],
     song: ["asset/audio/luffy.mp3"]
   },
   {
@@ -149,6 +149,12 @@ const allMove = [
     style: "spAtk",
     cost: 150,
     add: {},
+    img:{
+      sprite:"./asset/img/kamehameha.png",
+      yMin: 200,
+      yMax: 3000,
+    },
+    position: "y"
   },
   {
     name: "Rasengan",
@@ -157,14 +163,26 @@ const allMove = [
     style: "spAtk",
     cost: 150,
     add: {},
+    img: {
+      sprite:"./asset/img/rasengan.png",
+      xMin: 80,
+      xMax: 80*4,
+    },
+    position: "x"
   },
   {
-    name: "Gomu Gomu no Pistol",
-    description: "a punch as powerful as a pistol bullet",
-    power: 90,
+    name: "Gatling",
+    description: " it's a burst of Chewing Jet Pistol ",
+    power: 150,
     style: "atk",
     cost: 100,
     add: {},
+    img:{
+      sprite:"./asset/img/Gatling.png",
+      yMin: 200,
+      yMax: 1800,
+    },
+    position: "y"
   },
   {
     name: "bullet burst",

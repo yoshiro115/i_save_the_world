@@ -269,14 +269,19 @@ function loadEvent() {
             findenemy[0].song
           );
         }
-
+        
+        let fightStageHeroImage = document.createElement("img");
+        let fightStageEnemyImage = document.createElement("img");
         battle = new Battle(
           game.hero,
           enemy,
           heroLifeName,
           enemyLifeName,
           heroLifeRemaining,
-          enemyLifeRemaining
+          enemyLifeRemaining,
+          fightStageHeroImage,
+          fightStageEnemyImage,
+          fightStageHero
         );
 
         //NAME AND LIFE HERO
@@ -296,13 +301,13 @@ function loadEvent() {
         // enemyLifeRemaining.style.width = battle.enemyLifePercentage * 200 + "px";
         // enemyLifeRemaining.style.backgroundColor = lifeColor(battle.enemyLifePercentage);
 
-        let fightStageHeroImage = document.createElement("img");
+        
         fightStageHero.append(fightStageHeroImage);
         fightStageHeroImage.setAttribute("src", battle.currentHero.img);
 
-        let fightStageHeroEnemy = document.createElement("img");
-        fightStageEnemy.append(fightStageHeroEnemy);
-        fightStageHeroEnemy.setAttribute("src", battle.enemy.img);
+        
+        fightStageEnemy.append(fightStageEnemyImage);
+        fightStageEnemyImage.setAttribute("src", battle.enemy.img);
 
         fightMenuMessage.innerText = battle.message;
         fightMenuMessage.classList.add("show");
@@ -485,7 +490,8 @@ function loadEvent() {
               oneSkill.addEventListener("click", () => {
                 fightMenuSkillHero.classList.remove("show");
                 fightMenuBtnPrevious.remove();
-                fightMenuMessage.innerText = battle.playTurnFirst(skill);
+                battle.playTurn(skill)
+                fightMenuMessage.innerText = battle.message;
                 fightMenuMessage.classList.add("show");
                 setTimeout(() => {
                   battle.updateLifeBar(battle.heroLifeRemaining);
@@ -494,7 +500,8 @@ function loadEvent() {
 
                 setTimeout(() => {
                   if (battle.checkBattle()) {
-                    fightMenuMessage.innerText = battle.playTurnSecond(skill);
+                    battle.playTurn(skill)
+                    fightMenuMessage.innerText = battle.message;
                   } else {
                     fightMenuMessage.classList.add("show");
                     fightMenuChoice.classList.remove("show");
@@ -507,6 +514,7 @@ function loadEvent() {
                     fightMenuMessage.classList.remove("show");
                     fightMenuChoice.classList.add("show");
                   }
+                  battle.endTurn();
                 }, 3000);
 
                 // console.log(battle.winner)
@@ -534,7 +542,7 @@ function loadEvent() {
                         fightMenuSkillHero.classList.remove("show");
                         fightMenuSkillHero.remove();
                         fightStageHeroImage.remove();
-                        fightStageHeroEnemy.remove();
+                        fightStageEnemyImage.remove();
                         eventsTransition.init(menuGameElement);
                         enemy = 0;
                         loadEvent();
@@ -554,7 +562,7 @@ function loadEvent() {
                         fightMenuSkillHero.remove();
                         // console.log(fightMenuSkillHero)
                         fightStageHeroImage.remove();
-                        fightStageHeroEnemy.remove();
+                        fightStageEnemyImage.remove();
                         eventsTransition.init(menuGameElement);
                         // console.log(fightStageHeroImage)
                         enemy = 0;

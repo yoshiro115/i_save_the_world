@@ -3,7 +3,7 @@
     width: 760px;
     height: 427.5px;
     border-radius: 5px;
-    background: #0000007e;
+    background: #201f1ea2;
     opacity: 0;
     animation: events-transition-fade-in 0.8s forwards;
     z-index: 7;
