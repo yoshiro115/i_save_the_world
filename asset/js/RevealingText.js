@@ -33,7 +33,7 @@ class RevealingText {
   }
 
   revealOneCharacter(characterArray) {
-    console.log(characterArray);
+    // console.log(characterArray);
     const next = characterArray.splice(0, 1)[0];
     next.span.classList.add("revealed");
 

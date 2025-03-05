@@ -3,8 +3,11 @@ btnStartElement.addEventListener("click", () => {
   menuGameElement.classList.add("show");
   killLife.classList.add("show");
   game = new Game(eventsArray);
+  eventsTransition = new EventsTransition();
+  eventsTransition.init(menuGameElement);
   game.mainTheme.play();
-  game.mainTheme.loop;
+  game.mainTheme.loop = true;
+  console.log((killLife.innerHTML = game.stat()));
   loadEvent();
 });
 
@@ -13,11 +16,12 @@ btnStartElement.addEventListener("click", () => {
 
 //Function
 function loadEvent() {
-  // console.log(game.hero)
   killLife.innerHTML = game.stat();
   if (game.life === 0) {
+    eventsTransition.fadeOut();
     menuGameElement.classList.remove("show");
     menuEndElement.classList.add("show");
+
     btnResetElement.addEventListener("click", () => {
       menuEndElement.classList.remove("show");
       killLife.innerHTML = "";
@@ -31,6 +35,7 @@ function loadEvent() {
     switch (game.events[game.indexEvent].type) {
       // ! Story Event
       case "story":
+        eventsTransition.fadeOut();
         storyElement.classList.add("story-container");
         // create History Title and Add
         storyTitle = document.createElement("h2");
@@ -63,23 +68,26 @@ function loadEvent() {
           // index Event increase
 
           // remove created element
-          if(revealingText.isDone){
+          if (revealingText.isDone) {
             storyTitle.remove();
-          storyText.remove();
-          storyNextBtn.remove();
-          storyElement.classList.remove("story-container");
-          // console.log(game.indexEvent);
-          game.indexEvent++;
-          loadEvent();
-          }else{
+            storyText.remove();
+            storyNextBtn.remove();
+            storyElement.classList.remove("story-container");
+            // console.log(game.indexEvent);
+
+            eventsTransition.init(menuGameElement);
+            game.indexEvent++;
+
+            loadEvent();
+          } else {
             revealingText.warpToDone();
           }
-          
         });
         break;
 
       //   ! Character Choice Event
       case "character choice":
+        eventsTransition.fadeOut();
         storyElement.classList.add("story-container");
         // create History Title and Add
         storyTitle = document.createElement("h2");
@@ -139,6 +147,7 @@ function loadEvent() {
             storyText.remove();
             charactersChoiceContainer.remove();
             storyElement.classList.remove("story-container");
+            eventsTransition.init(menuGameElement);
             // console.log(game.indexEvent);
             game.indexEvent++;
             loadEvent();
@@ -148,6 +157,7 @@ function loadEvent() {
 
       //   ! Character Talking Event
       case "character talking":
+        eventsTransition.fadeOut();
         //   Div container Character Talking initialize
         characterDivImg = document.createElement("div");
         menuGameElement.append(characterDivImg);
@@ -186,29 +196,36 @@ function loadEvent() {
         storyNextBtn.innerText = "NEXT";
 
         storyNextBtn.addEventListener("click", () => {
-          if(revealingText.isDone){
+          if (revealingText.isDone) {
             // index Event increase
-          game.indexEvent++;
-          // remove created element
-          menuGameElement.childNodes.length = 0;
-          characterDivImg.remove();
-          characterImg.remove();
-          talkDiv.remove();
-          talkP.remove();
-          storyNextBtn.remove();
-          // console.log(game.indexEvent);
-          loadEvent();
-          }
-          else{
+            game.indexEvent++;
+            // remove created element
+            menuGameElement.childNodes.length = 0;
+            characterDivImg.remove();
+            characterImg.remove();
+            talkDiv.remove();
+            talkP.remove();
+            storyNextBtn.remove();
+            eventsTransition.init(menuGameElement);
+            // console.log(game.indexEvent);
+            loadEvent();
+          } else {
             revealingText.warpToDone();
           }
-          
         });
         break;
 
       //   ! Fight Event
       case "fight":
         //! create all element START
+        eventsTransition.fadeOut();
+        if (game.events[game.indexEvent].song) {
+          game.mainTheme.pause();
+          battleSong = new Audio(game.events[game.indexEvent].song[0]);
+          battleSong.volume = 0.1;
+          battleSong.loop = true;
+          battleSong.play();
+        }
 
         // fight div container create and add
         // fightDivContainer = document.createElement('div');
@@ -495,9 +512,18 @@ function loadEvent() {
                 // console.log(battle.winner)
                 setTimeout(() => {
                   if (battle.winner) {
+                    if (battleSong) {
+                      battleSong.pause();
+                      battleSong.currentTime = 0;
+                    }
                     if (battle.winner.name === battle.currentHero.name) {
                       fightMenuMessage.innerText = `${battle.winner.name.toUpperCase()} WIN`;
                       battle.currentHero.songName.play();
+                      if (battleSong) {
+                        setTimeout(() => {
+                          game.mainTheme.play();
+                        }, 3000);
+                      }
                       setTimeout(() => {
                         game.roundWin++;
                         game.indexEvent++;
@@ -509,6 +535,7 @@ function loadEvent() {
                         fightMenuSkillHero.remove();
                         fightStageHeroImage.remove();
                         fightStageHeroEnemy.remove();
+                        eventsTransition.init(menuGameElement);
                         enemy = 0;
                         loadEvent();
                       }, 1000);
@@ -528,6 +555,7 @@ function loadEvent() {
                         // console.log(fightMenuSkillHero)
                         fightStageHeroImage.remove();
                         fightStageHeroEnemy.remove();
+                        eventsTransition.init(menuGameElement);
                         // console.log(fightStageHeroImage)
                         enemy = 0;
 

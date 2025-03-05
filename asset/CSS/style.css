@@ -94,6 +94,7 @@ h2 {
   background-position: center;
   background-size: cover;
   overflow: hidden;
+  z-index: 2;
   
 }
 
@@ -289,6 +290,7 @@ h2 {
   height: 6px;
   border-radius: 8px;
   background-color: rgb(14, 192, 14);
+  transition: width 0.4s;
   
 }
 .fight-stage-container{

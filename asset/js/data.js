@@ -39,6 +39,7 @@ eventsArray = [
     type: "fight",
     text: "deathstroke",
     img: ["./asset/img/mapFight1.jpg"],
+    song: ["./asset/audio/battle_fire_spirit.mp3"]
   },
   {
     title: "Win The First Fight",
@@ -55,7 +56,7 @@ eventsArray.forEach((event) => {
     event.type,
     event.text ? event.text : "",
     event.img ? event.img : [],
-    event.son ? event.song : []
+    event.song ? event.song : []
   );
   events.push(objectEvent);
 });
@@ -239,6 +240,9 @@ let enemy;
 let infoFight = [];
 let battle;
 let revealingText;
+let eventsTransition
+let battleSong;
+
 
 // GAME INITIALIZE
 // game = new Game(eventsArray);
