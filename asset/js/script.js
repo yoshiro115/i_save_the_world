@@ -35,7 +35,11 @@ function loadEvent() {
     switch (game.events[game.indexEvent].type) {
       // ! Story Event
       case "story":
+      case "relax":
         eventsTransition.fadeOut();
+        if (game.events[game.indexEvent].type === "relax") {
+          game.hpRecovery();
+        }
         storyElement.classList.add("story-container");
         // create History Title and Add
         storyTitle = document.createElement("h2");
@@ -269,7 +273,7 @@ function loadEvent() {
             findenemy[0].song
           );
         }
-        
+
         let fightStageHeroImage = document.createElement("img");
         let fightStageEnemyImage = document.createElement("img");
         battle = new Battle(
@@ -301,11 +305,9 @@ function loadEvent() {
         // enemyLifeRemaining.style.width = battle.enemyLifePercentage * 200 + "px";
         // enemyLifeRemaining.style.backgroundColor = lifeColor(battle.enemyLifePercentage);
 
-        
         fightStageHero.append(fightStageHeroImage);
         fightStageHeroImage.setAttribute("src", battle.currentHero.img);
 
-        
         fightStageEnemy.append(fightStageEnemyImage);
         fightStageEnemyImage.setAttribute("src", battle.enemy.img);
 
@@ -490,7 +492,7 @@ function loadEvent() {
               oneSkill.addEventListener("click", () => {
                 fightMenuSkillHero.classList.remove("show");
                 fightMenuBtnPrevious.remove();
-                battle.playTurn(skill)
+                battle.playTurn(skill);
                 fightMenuMessage.innerText = battle.message;
                 fightMenuMessage.classList.add("show");
                 setTimeout(() => {
@@ -500,7 +502,7 @@ function loadEvent() {
 
                 setTimeout(() => {
                   if (battle.checkBattle()) {
-                    battle.playTurn(skill)
+                    battle.playTurn(skill);
                     fightMenuMessage.innerText = battle.message;
                   } else {
                     fightMenuMessage.classList.add("show");

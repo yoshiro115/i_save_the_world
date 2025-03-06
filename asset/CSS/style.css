@@ -1,6 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Fjalla+One&display=swap");
 
+:root{
+  --width-game : 1064px;
+  --width-game-number: 1064;
+  --heigth-game: 598.5px;
+  --heigth-game-number: 598.5;
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +18,9 @@
 body {
   overflow: hidden;
 }
-
+h1{
+  font-size: 3rem;
+}
 /* font start */
 h1,
 h2,
@@ -43,10 +53,11 @@ header {
   padding: 2rem 0;
 }
 h1, header p{
-  padding: 0px 350px;
+  padding: 0px 0px 0px 475px;
 }
 header p {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
+  padding-left: 580px;
   
 }
 
@@ -54,9 +65,11 @@ h2,
 .story-p,
 .character-choice-p, h3 {
   color: white;
+  
 }
 h2 {
   text-align: center;
+  font-size: 2.4rem;
 }
 
 /* header end */
@@ -66,13 +79,14 @@ h2 {
   text-align: justify;
   padding: 20px 190px;
   /* padding left 25 % */
-  height: 299.25px;
+  height: var(--heigth-game);
   /* height 70% */
-  font-size: 1.1rem;
+  font-size: 1.8rem;
 }
 .character-choice-p {
   text-align: center;
   padding-top: 20px;
+  font-size: 1.5rem;
 }
 
 /* ! CONTAINER*/
@@ -89,7 +103,7 @@ h2 {
   display: none;
   justify-content: space-between;
   margin: 0 100px;
-  width: 760px;
+  width: var(--width-game);
 }
 /* Game Container by default */
 .game-container {
@@ -98,8 +112,8 @@ h2 {
   z-index: 10; */
   border: 1px white solid;
   margin: 0 100px;
-  width: 760px;
-  height: 427.5px;
+  width: var(--width-game);
+  height: var(--heigth-game);
   border-radius: 5px;
   background-position: center;
   background-size: cover;
@@ -131,11 +145,11 @@ h2 {
   flex-direction: column;
   justify-content: end;
   align-items: center;
-  row-gap: 130px;
+  row-gap: 200px;
   
 }
 .menu-end h2{
-  font-size: 4rem;
+  font-size: 6rem;
   color: #e74c3c;
 }
 .menu-end button{
@@ -146,17 +160,24 @@ h2 {
 .story-container {
   display: flex;
   flex-direction: column;
+  /* justify-content: space-between; */
   padding: 20px;
-  height: 100%;
+  height: var(--heigth-game);
   background-color: rgba(0, 0, 0, 0.377);
   backdrop-filter: blur(2px);
 }
+.story-container p{
+  justify-items: flex-start;
+  
+}
 
 .characters-choice-container {
+  height: var(--heigth-game) ;
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  
 }
 
 /* ! Fin container */
@@ -195,7 +216,7 @@ h2 {
   color: white;
   border: 1px solid #252525;
   box-shadow: 5px 5px 8px rgb(2, 2, 2);
-  align-self: self-end;
+  align-self:self-end;
   margin: 20px;
 }
 
@@ -210,7 +231,7 @@ h2 {
 .characters-choice-container div {
   flex: 1 1 0;
   width: 0;
-  height: 299.25px;
+  max-height: calc(var(--heigth-game) * 0.7);
   /* height 70% */
 }
 
@@ -232,7 +253,7 @@ h2 {
 .character-img {
   text-align: center;
   /* margin-top: 30px; */
-  height: 427.5px;
+  height: var(--heigth-game);
   /* height: 397px; */
   /* 93% */
   z-index: 1;
@@ -240,7 +261,7 @@ h2 {
 .character-img img {
   /* width: 100%; */
   /* height: 100%; */
-  height: 500px;
+  height: 600px;
   object-fit: contain;
   /* 100% - margin */
 }
@@ -267,6 +288,7 @@ h2 {
   padding: 0 50px;
   text-align: justify;
   font-weight: 700;
+  font-size: 1.8rem;
 }
 
 /* ! Fight Event Start */
@@ -275,7 +297,7 @@ h2 {
   display: none;
   flex-direction: column;
   padding: 35px 15px;
-  height: 299.25px;
+  height: calc(var(--heigth-game) * 0.7);
   background-position: bottom;
   background-size: cover;
 }
@@ -290,7 +312,7 @@ h2 {
 
 .life-total {
   border: 2px solid white;
-  width: 200px;
+  width: 250px;
   height: 10px;
   border-radius: 8px;
   overflow: hidden;
@@ -310,7 +332,7 @@ h2 {
 }
 
 .fight-stage-container div{
-  width: 200px;
+  width: 250px;
 }
 
 #fight-stage-hero img, #fight-stage-enemy img{
@@ -329,7 +351,7 @@ h2 {
 }
 .Kamehameha, .Gatling{
   position:absolute;
-  top:80px;
+  top:110px;
   left: 130px;
   min-width:  950px;
   height: 200px;
@@ -344,7 +366,7 @@ h2 {
 }
 
 .fight-menu-container{
-  height: 128.25px;
+  height: calc(var(--heigth-game) * 0.3);
   border:2px solid white;
   border-radius: 3px;
   background-image: url('../img/menuFight.jpg');
@@ -352,8 +374,8 @@ h2 {
   background-position: center;
   display: none;
   color: white;
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
 .fight-menu-message{
@@ -372,7 +394,7 @@ h2 {
 }
 .fight-menu-choice div{
   text-align: center;
-  line-height: 127px;
+  line-height: calc(var(--heigth-game) * 0.3);
   border: 2px solid white;
   width: 100%;
   height: 100%;
@@ -393,6 +415,7 @@ h2 {
   justify-content: center;
   /* margin: 20px; */
   width: 100%;
+  
  
   
 }
@@ -403,6 +426,8 @@ h2 {
   /* justify-self: center; */
   border: 2px white solid;
   border-radius: 15px;
+  font-size: 1.4rem;
+  font-weight: 600;
   text-align: center;
   cursor: pointer;
 }
@@ -413,9 +438,13 @@ h2 {
   margin: 0;
 }
 .previous{
-  margin: 0 auto;
-  width: 760px;
-  height: 427.5px;
+  position: absolute;
+  display: flex;
+  top:60px;
+  left:100px;
+  /* margin: 0 auto; */
+  width: var(--width-game);
+  height: var(--heigth-game);
 }
 /* #noise{
   position: absolute;

@@ -48,11 +48,11 @@ class Battle {
       if (lifeBar.id === "hero-life-remaining") {
         this.heroLifePercentage =
           this.currentHero.currentHp / this.currentHero.stats.hp;
-        lifeBar.style.width = this.heroLifePercentage * 200 + "px";
+        lifeBar.style.width = this.heroLifePercentage * 250 + "px";
         lifeBar.style.backgroundColor = this.lifeColor(this.heroLifePercentage);
       } else {
         this.enemyLifePercentage = this.enemy.currentHp / this.enemy.stats.hp;
-        lifeBar.style.width = this.enemyLifePercentage * 200 + "px";
+        lifeBar.style.width = this.enemyLifePercentage * 250 + "px";
         lifeBar.style.backgroundColor = this.lifeColor(
           this.enemyLifePercentage
         );

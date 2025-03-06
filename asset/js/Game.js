@@ -23,4 +23,11 @@ class Game {
       this.hero.length = 0;
       this.item.length = 0;
     }
+
+    hpRecovery(){
+      this.hero.forEach(oneHero => {
+        oneHero.currentHp = oneHero.stats.hp;
+      })
+      console.log(this.hero)
+    }
   }
