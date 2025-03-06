@@ -3,49 +3,49 @@ eventsArray = [
     title: "Prologue",
     type: "story",
     text: "You awaken to the blinding light of a hero’s presence, their silhouette framed against a sky torn apart by chaos. Their voice cuts through the air like thunder — urgent, commanding, impossible to ignore. The world stands at the edge of destruction, and you have no choice but to rise. The planet itself has just roared in pain, shaken by a tremor so powerful it split the earth and cracked the sky. Destiny has ripped you from your slumber, and now, whether you are ready or not, you must become the blade that carves a path through the storm.",
-    img: ["./asset/img/crater.jpg"],
+    img: ["asset/img/crater.jpg"],
   },
   {
     title: "First Choice",
     type: "character choice",
     text: "The hero stands before you : ",
     img: [
-      "./asset/img/crater.jpg",
-      "./asset/img/naruto.png",
-      "./asset/img/goku.png",
-      "./asset/img/luffy.png",
+      "asset/img/crater.jpg",
+      "asset/img/naruto.png",
+      "asset/img/goku.png",
+      "asset/img/luffy.png",
     ],
   },
   {
     title: "First talk with the hero",
     type: "character talking",
     text: "Are you hurt? Can you stand? Listen carefully — there’s no time to waste. The planet is breaking apart. Something ancient, something powerful, just woke up beneath us.",
-    img: ["./asset/img/crater.jpg"],
+    img: ["asset/img/crater.jpg"],
   },
   {
     title: "first enemy",
     type: "character talking",
     text: "Well, well… looks like my luck just turned, Of all the poor souls still breathing, I get to deal with you two. Don’t take it personally. Someone paid very well to make sure neither of you leave this place alive. Especially you.",
-    img: ["./asset/img/crater.jpg", "./asset/img/deathstroke.png"],
+    img: ["asset/img/crater.jpg", "asset/img/deathstroke.png"],
   },
   {
     title: "I'll take care of it",
     type: "character talking",
     text: "Stay back.This one’s mine.You want me.\n Deathstroke?\n Come and try.",
-    img: ["./asset/img/crater.jpg"],
+    img: ["asset/img/crater.jpg"],
   },
   {
     title: "First Battle",
     type: "fight",
     text: "deathstroke",
-    img: ["./asset/img/mapFight1.jpg"],
-    song: ["./asset/audio/battle_fire_spirit.mp3"]
+    img: ["asset/img/mapFight1.jpg"],
+    song: ["asset/audio/battle_fire_spirit.mp3"]
   },
   {
     title: "Win The First Fight",
     type: "character talking",
     text: "Super Easy like always. I'm so hungry. Let's take a break to regain our strength",
-    img: ["./asset/img/crater.jpg"],
+    img: ["asset/img/crater.jpg"],
   }
 ];
 
@@ -65,7 +65,7 @@ eventsArray.forEach((event) => {
 const allCharaters = [
   {
     name: "naruto",
-    img: "./asset/img/naruto.png",
+    img: "asset/img/naruto.png",
     spritSheet: "",
     stats: {
       hp: 350,
@@ -81,7 +81,7 @@ const allCharaters = [
   },
   {
     name: "goku",
-    img: "./asset/img/goku.png",
+    img: "asset/img/goku.png",
     spritSheet: "",
     stats: {
       hp: 300,
@@ -97,7 +97,7 @@ const allCharaters = [
   },
   {
     name: "luffy",
-    img: "./asset/img/luffy.png",
+    img: "asset/img/luffy.png",
     spritSheet: "",
     stats: {
       hp: 400,
@@ -113,7 +113,7 @@ const allCharaters = [
   },
   {
     name: "deathstroke",
-    img: "./asset/img/deathstroke.png",
+    img: "asset/img/deathstroke.png",
     spritSheet: "",
     stats: {
       hp: 200,
@@ -150,7 +150,7 @@ const allMove = [
     cost: 150,
     add: {},
     img:{
-      sprite:"./asset/img/kamehameha.png",
+      sprite:"asset/img/kamehameha.png",
       yMin: 200,
       yMax: 3000,
     },
@@ -164,7 +164,7 @@ const allMove = [
     cost: 150,
     add: {},
     img: {
-      sprite:"./asset/img/rasengan.png",
+      sprite:"asset/img/rasengan.png",
       xMin: 80,
       xMax: 80*4,
     },
@@ -178,7 +178,7 @@ const allMove = [
     cost: 100,
     add: {},
     img:{
-      sprite:"./asset/img/Gatling.png",
+      sprite:"asset/img/Gatling.png",
       yMin: 200,
       yMax: 1800,
     },
