@@ -51,7 +51,7 @@ function loadEvent() {
     endTitle.style.color = "green";
 
     btnResetElement.addEventListener("click", () => {
-      endTitle.innerText = "YOU LOOSE";
+      endTitle.innerText = "YOU ARE DEAD";
       endTitle.style.color = "red";
       menuEndElement.classList.remove("show");
       killLife.innerHTML = "";
