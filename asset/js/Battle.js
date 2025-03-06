@@ -102,20 +102,20 @@ class Battle {
         skillImage.style.backgroundPosition = `-${positionSprite}px 0px`;
         positionSprite += skillUse.img.xMin;
       } else {
-        positionSprite = skillUse.img.xMax - skillUse.img.xMin;
+        positionSprite = skillUse.img.xMax - ( 2 * skillUse.img.xMin);
         skillImage.style.backgroundPositionX = `${
           positionSprite
         }px 0px`;
         
       }
-      if (leftPositionImg < 650) {
+      if (leftPositionImg < 800) {
         
         leftPositionImg += 50;
         skillImage.style.left = leftPositionImg + "px";
       }
-    }, 100);
+    }, 30);
     // console.log(skillGif)
-    await this.wait(1100)
+    await this.wait(1400)
     clearInterval(skillGif)
     skillImage.remove();
   }

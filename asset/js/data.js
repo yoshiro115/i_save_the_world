@@ -54,7 +54,7 @@ eventsArray = [
     img: ["asset/img/relax.gif"],
   },
   {
-    title: "Someone approaching",
+    title: "Someone's approaching",
     type: "story",
     text: "You awaken to the blinding light of a hero’s presence, their silhouette framed against a sky torn apart by chaos. Their voice cuts through the air like thunder — urgent, commanding, impossible to ignore. The world stands at the edge of destruction, and you have no choice but to rise. The planet itself has just roared in pain, shaken by a tremor so powerful it split the earth and cracked the sky. Destiny has ripped you from your slumber, and now, whether you are ready or not, you must become the blade that carves a path through the storm.Suddenly, the wind shifted. The warm air turned cold, and the ground trembled faintly beneath you. A dark aura began to rise from the horizon.",
     img: ["asset/img/night_desert.jpg"],
@@ -96,7 +96,7 @@ eventsArray = [
   {
     title: "Himiko2",
     type: "character talking",
-    text: "Sire, yes sire.\n You're so cute, let me give you a hug",
+    text: "Sir, yes sir.\n You're so cute, let me give you a hug",
     img: ["asset/img/night_desert.jpg", "asset/img/himiko.png"],
     song: ["asset/audio/zoldyck.mp3"],
   },
@@ -138,14 +138,14 @@ eventsArray = [
   {
   title: "A Voice from the Past",
   type: "character talking",
-  text: "Hero… at last, you stand before me. We have waited so long. Too long. Your world now hangs by a single thread, and that thread… is you.\n I'm going to take a more human approach to taking your life.",
+  text: "Hero… at last, you stand before me. We have waited so long. Too long. Your world now hangs by a single thread, and that thread… is you.\n I'm going to take a more human forme to taking your life.",
   img: ["asset/img/night_desert.jpg", "asset/img/Demon_King.png"],
   song: ["asset/audio/rwby.mp3"],
   },
   {
     title: "A Voice from the Past2",
     type: "character talking",
-    text: "Are you ready to repent and finally let the world go to the dogs?",
+    text: "Are you ready to repent and finally letting the world fall apart?",
     img: ["asset/img/night_desert.jpg", "asset/img/demon_king_human.png"],
     song: ["asset/audio/rwby.mp3"],
     },
@@ -307,8 +307,8 @@ const allMove = [
     add: {},
     img: {
       sprite: "asset/img/rasengan.png",
-      xMin: 80,
-      xMax: 80 * 4,
+      xMin: 250,
+      xMax: 2250,
     },
     position: "x",
   },
