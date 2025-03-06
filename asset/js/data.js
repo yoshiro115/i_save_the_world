@@ -139,7 +139,7 @@ eventsArray = [
   title: "A Voice from the Past",
   type: "character talking",
   text: "Hero… at last, you stand before me. We have waited so long. Too long. Your world now hangs by a single thread, and that thread… is you.\n I'm going to take a more human approach to taking your life.",
-  img: ["asset/img/night_desert.jpg", "asset/img/Demon_king.png"],
+  img: ["asset/img/night_desert.jpg", "asset/img/Demon_King.png"],
   song: ["asset/audio/rwby.mp3"],
   },
   {
