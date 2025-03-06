@@ -1,13 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Fjalla+One&display=swap");
 
-:root{
-  --width-game : 1064px;
+:root {
+  --width-game: 1064px;
   --width-game-number: 1064;
   --heigth-game: 598.5px;
   --heigth-game-number: 598.5;
 }
-
 
 * {
   margin: 0;
@@ -18,7 +17,7 @@
 body {
   overflow: hidden;
 }
-h1{
+h1 {
   font-size: 3rem;
 }
 /* font start */
@@ -33,10 +32,14 @@ h3,
 p {
   font-family: "Caveat", serif;
 }
-.story-p span, .talking-div p span, .fight-menu-message span{
+.story-p span,
+.talking-div p span,
+.fight-menu-message span {
   opacity: 0;
 }
-.story-p span.revealed, .talking-div p span.revealed, .fight-menu-message span.revealed{
+.story-p span.revealed,
+.talking-div p span.revealed,
+.fight-menu-message span.revealed {
   opacity: 1;
 }
 /* font end */
@@ -45,27 +48,27 @@ p {
 
 header {
   /* text-align: center; */
-  margin: 0px ;
+  margin: 0px;
   width: 100vw;
   height: 120px;
   color: #e74c3c;
   background-color: black;
   padding: 2rem 0;
 }
-h1, header p{
+h1,
+header p {
   padding: 0px 0px 0px 475px;
 }
 header p {
   font-size: 1.2rem;
   padding-left: 580px;
-  
 }
 
 h2,
 .story-p,
-.character-choice-p, h3 {
+.character-choice-p,
+h3 {
   color: white;
-  
 }
 h2 {
   text-align: center;
@@ -92,14 +95,14 @@ h2 {
 /* ! CONTAINER*/
 
 .main-container {
-  position:absolute;
-  
+  position: absolute;
+
   background-color: black;
   width: 100vw;
   height: 100vh;
   z-index: 6;
 }
-.Kill-life{
+.Kill-life {
   display: none;
   justify-content: space-between;
   margin: 0 100px;
@@ -107,7 +110,7 @@ h2 {
 }
 /* Game Container by default */
 .game-container {
-  position:absolute;
+  position: absolute;
   /* position:relative;
   z-index: 10; */
   border: 1px white solid;
@@ -119,7 +122,6 @@ h2 {
   background-size: cover;
   overflow: hidden;
   z-index: 2;
-  
 }
 
 /* container start menu */
@@ -146,13 +148,12 @@ h2 {
   justify-content: end;
   align-items: center;
   row-gap: 200px;
-  
 }
-.menu-end h2{
+.menu-end h2 {
   font-size: 6rem;
   color: #e74c3c;
 }
-.menu-end button{
+.menu-end button {
   margin-bottom: 20px;
 }
 
@@ -166,18 +167,16 @@ h2 {
   background-color: rgba(0, 0, 0, 0.377);
   backdrop-filter: blur(2px);
 }
-.story-container p{
+.story-container p {
   justify-items: flex-start;
-  
 }
 
 .characters-choice-container {
-  height: var(--heigth-game) ;
+  height: var(--heigth-game);
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  
 }
 
 /* ! Fin container */
@@ -210,17 +209,19 @@ h2 {
   box-shadow: 0px 0px 24px 5px white, inset 0px 0px 24px 5px white;
 }
 
-.btn-next, .btn-previous {
+.btn-next,
+.btn-previous {
   transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
   background-color: #252525;
   color: white;
   border: 1px solid #252525;
   box-shadow: 5px 5px 8px rgb(2, 2, 2);
-  align-self:self-end;
+  align-self: self-end;
   margin: 20px;
 }
 
-.btn-next:hover, .btn-previous:hover {
+.btn-next:hover,
+.btn-previous:hover {
   background-color: #050505;
   color: rgb(206, 206, 206);
   border: 1px solid #808080;
@@ -306,7 +307,7 @@ h2 {
   display: flex;
   justify-content: space-between;
 }
-.life-container h3{
+.life-container h3 {
   text-align: center;
 }
 
@@ -323,53 +324,53 @@ h2 {
   border-radius: 8px;
   background-color: rgb(14, 192, 14);
   transition: width 0.4s;
-  
 }
-.fight-stage-container{
+.fight-stage-container {
   display: flex;
   justify-content: space-between;
   height: 100%;
 }
 
-.fight-stage-container div{
+.fight-stage-container div {
   width: 250px;
 }
 
-#fight-stage-hero img, #fight-stage-enemy img{
+#fight-stage-hero img,
+#fight-stage-enemy img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-@keyframes damage-blink{
-  to{
-    visibility:hidden;
+@keyframes damage-blink {
+  to {
+    visibility: hidden;
   }
 }
-.damage-blink{
+.damage-blink {
   animation: damage-blink 0.3s steps(2, start) infinite;
 }
-.Kamehameha, .Gatling{
-  position:absolute;
-  top:110px;
+.Kamehameha,
+.Gatling {
+  position: absolute;
+  top: 110px;
   left: 130px;
-  min-width:  950px;
+  min-width: 950px;
   height: 200px;
 }
-.Rasengan{
-  position:absolute;
-  top:60px;
+.Rasengan {
+  position: absolute;
+  top: 60px;
   left: 100px;
-  max-width:  250px;
+  max-width: 250px;
   height: 250px;
-  
 }
 
-.fight-menu-container{
+.fight-menu-container {
   height: calc(var(--heigth-game) * 0.3);
-  border:2px solid white;
+  border: 2px solid white;
   border-radius: 3px;
-  background-image: url('../img/menuFight.jpg');
+  background-image: url("../img/menuFight.jpg");
   background-size: cover;
   background-position: center;
   display: none;
@@ -378,35 +379,33 @@ h2 {
   font-weight: 700;
 }
 
-.fight-menu-message{
-  display:none;
+.fight-menu-message {
+  display: none;
   justify-content: center;
   align-items: center;
   width: 100%;
   cursor: pointer;
 }
-.fight-menu-choice{
+.fight-menu-choice {
   display: none;
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  
 }
-.fight-menu-choice div{
+.fight-menu-choice div {
   text-align: center;
   line-height: calc(var(--heigth-game) * 0.3);
   border: 2px solid white;
   width: 100%;
   height: 100%;
   cursor: pointer;
-
 }
 
-.fight-menu-choice div:hover{
+.fight-menu-choice div:hover {
   background-color: rgba(138, 134, 134, 0.466);
 }
 
-.fight-menu-skill-hero{
+.fight-menu-skill-hero {
   display: none;
   flex-wrap: wrap;
   /* gap: 10px; */
@@ -415,13 +414,10 @@ h2 {
   justify-content: center;
   /* margin: 20px; */
   width: 100%;
-  
- 
-  
 }
 
-.fight-menu-skill-hero-one{
-  min-width:35%;
+.fight-menu-skill-hero-one {
+  min-width: 35%;
   max-height: 40%;
   /* justify-self: center; */
   border: 2px white solid;
@@ -431,17 +427,17 @@ h2 {
   text-align: center;
   cursor: pointer;
 }
-.fight-menu-skill-hero-one:hover{
+.fight-menu-skill-hero-one:hover {
   background-color: rgba(0, 0, 0, 0.466);
 }
-.btn-previous{
+.btn-previous {
   margin: 0;
 }
-.previous{
+.previous {
   position: absolute;
   display: flex;
-  top:60px;
-  left:100px;
+  top: 80px;
+  left: 100px;
   /* margin: 0 auto; */
   width: var(--width-game);
   height: var(--heigth-game);
