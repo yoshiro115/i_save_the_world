@@ -39,7 +39,7 @@ eventsArray = [
     type: "fight",
     text: "deathstroke",
     img: ["asset/img/mapFight1.jpg"],
-    song: ["asset/audio/battle_fire_spirit.mp3"]
+    song: ["asset/audio/battle_fire_spirit.mp3"],
   },
   {
     title: "Win The First Fight",
@@ -51,61 +51,111 @@ eventsArray = [
     title: "First break",
     type: "relax",
     text: "The rest is short-lived, but gets you back on your feet. enjoy it, it won't always be the case.",
-    img: ["asset/img/relax.gif",],
+    img: ["asset/img/relax.gif"],
   },
   {
     title: "Someone approaching",
     type: "story",
     text: "You awaken to the blinding light of a hero’s presence, their silhouette framed against a sky torn apart by chaos. Their voice cuts through the air like thunder — urgent, commanding, impossible to ignore. The world stands at the edge of destruction, and you have no choice but to rise. The planet itself has just roared in pain, shaken by a tremor so powerful it split the earth and cracked the sky. Destiny has ripped you from your slumber, and now, whether you are ready or not, you must become the blade that carves a path through the storm.Suddenly, the wind shifted. The warm air turned cold, and the ground trembled faintly beneath you. A dark aura began to rise from the horizon.",
     img: ["asset/img/night_desert.jpg"],
-  },{
+  },
+  {
     title: "Stay on guard",
-    type:"character talking",
+    type: "character talking",
     text: "I feel an evil aura approaching us, stay on guard",
-    img: ['asset/img/night_desert.jpg']
-  }
-  ,{
+    img: ["asset/img/night_desert.jpg"],
+  },
+  {
     title: "Father FIRST TIME",
-    type:"character talking",
+    type: "character talking",
     text: "Well, these heroes are still alive!So Deathstroke was useless, like all Marvel villains.",
-    img: ['asset/img/night_desert.jpg','asset/img/father.png'],
-    song: ["asset/audio/zoldyck.mp3"]
-  },{
+    img: ["asset/img/night_desert.jpg", "asset/img/father.png"],
+    song: ["asset/audio/zoldyck.mp3"],
+  },
+  {
     title: "Father FIRST TIME2",
-    type:"character talking",
+    type: "character talking",
     text: "Himiko, please don't disappoint me",
-    img: ['asset/img/night_desert.jpg','asset/img/father.png'],
-    song: ["asset/audio/zoldyck.mp3"]
-  },{
+    img: ["asset/img/night_desert.jpg", "asset/img/father.png"],
+    song: ["asset/audio/zoldyck.mp3"],
+  },
+  {
     title: "Himiko",
-    type:"character talking",
+    type: "character talking",
     text: "New blood at last. I think we're gonna have a lot of fun together. I can't wait to be you.",
-    img: ['asset/img/night_desert.jpg','asset/img/himiko.png'],
-    song: ["asset/audio/zoldyck.mp3"]
-  },{
+    img: ["asset/img/night_desert.jpg", "asset/img/himiko.png"],
+    song: ["asset/audio/zoldyck.mp3"],
+  },
+  {
     title: "Father FIRST TIME3",
-    type:"character talking",
+    type: "character talking",
     text: "Bring me their heads, and we can finally decorate the base.",
-    img: ['asset/img/night_desert.jpg','asset/img/father.png'],
-    song: ["asset/audio/zoldyck.mp3"]
-  },{
+    img: ["asset/img/night_desert.jpg", "asset/img/father.png"],
+    song: ["asset/audio/zoldyck.mp3"],
+  },
+  {
     title: "Himiko2",
-    type:"character talking",
+    type: "character talking",
     text: "Sire, yes sire.\n You're so cute, let me give you a hug",
-    img: ['asset/img/night_desert.jpg','asset/img/himiko.png'],
-    song: ["asset/audio/zoldyck.mp3"]
-  },{
-    title: "Stay on guard",
-    type:"character talking",
+    img: ["asset/img/night_desert.jpg", "asset/img/himiko.png"],
+    song: ["asset/audio/zoldyck.mp3"],
+  },
+  {
+    title: "Bagare",
+    type: "character talking",
     text: "You really think you have a chance of beating us.",
-    img: ['asset/img/night_desert.jpg']
-  },{
+    img: ["asset/img/night_desert.jpg"],
+    song: ["asset/audio/zoldyck.mp3"],
+  },
+  {
     title: "Himiko Battle",
     type: "fight",
     text: "himiko",
-    img: ["asset/img/mapFight1.jpg"],
-    song: ["asset/audio/battle_fire_spirit.mp3"]
+    img: ["asset/img/night_desert.jpg"],
+    song: ["asset/audio/battle_fire_spirit.mp3"],
   },
+  {
+    title: "need some explication",
+    type: "character talking",
+    text: "Is that all you've got? Now you can tell us what's going on in the world. We don't understand anything",
+    img: ["asset/img/night_desert.jpg"],
+    // song: ["asset/audio/rwby.mp3"],
+  },
+  {
+    title: "A Shadowed Truth",
+    type: "story",
+    text: "Himiko collapses to the ground, out of breath, a twisted smile on her lips. Before losing consciousness, she whispers: 'You cannot escape what’s coming... He’s already here.' The wind suddenly dies. The once starry sky is swallowed by complete darkness. A gigantic silhouette appears in the distance, its very presence shaking the earth.",
+    img: ["asset/img/night_desert.jpg"],
+    // song: ["asset/audio/rwby.mp3"],
+  },
+  {
+    title: "The Colossus Rises",
+    type: "story",
+    text: "The earth splits open beneath your feet as a colossal hand emerges from the planet's core. This being, ancient as time itself, seems to know you. Its eyes, glowing like dead suns, lock onto you.",
+    img: ["asset/img/night_desert.jpg"],
+    // song: ["asset/audio/rwby.mp3"],
+  },
+  {
+  title: "A Voice from the Past",
+  type: "character talking",
+  text: "Hero… at last, you stand before me. We have waited so long. Too long. Your world now hangs by a single thread, and that thread… is you.\n I'm going to take a more human approach to taking your life.",
+  img: ["asset/img/night_desert.jpg", "asset/img/Demon_king.webp"],
+  song: ["asset/audio/rwby.mp3"],
+  },
+  {
+    title: "A Voice from the Past2",
+    type: "character talking",
+    text: "Are you ready to repent and finally let the world go to the dogs?",
+    img: ["asset/img/night_desert.jpg", "asset/img/demon_king_human.png"],
+    song: ["asset/audio/rwby.mp3"],
+    },
+    {
+      title: "The First True Fight",
+      type: "fight",
+      text: "demon_king_human",
+      img: ["asset/img/night_desert.jpg"],
+      song: ["asset/audio/perfect_time.mp3"] // epic music
+  }
 ];
 
 let events = [];
@@ -135,8 +185,8 @@ const allCharaters = [
       speed: 250,
       energy: 400,
     },
-    moveSetArray: ["Kick","Rasengan"],
-    song: ["asset/audio/naruto.mp3"]
+    moveSetArray: ["Kick", "Rasengan"],
+    song: ["asset/audio/naruto.mp3"],
   },
   {
     name: "goku",
@@ -151,8 +201,8 @@ const allCharaters = [
       speed: 270,
       energy: 200,
     },
-    moveSetArray: ["Kick","Kamehameha"],
-    song: ["asset/audio/goku.mp3"]
+    moveSetArray: ["Kick", "Kamehameha"],
+    song: ["asset/audio/goku.mp3"],
   },
   {
     name: "luffy",
@@ -167,8 +217,8 @@ const allCharaters = [
       speed: 200,
       energy: 300,
     },
-    moveSetArray: ["Kick","Gatling"],
-    song: ["asset/audio/luffy.mp3"]
+    moveSetArray: ["Kick", "Gatling"],
+    song: ["asset/audio/luffy.mp3"],
   },
   {
     name: "deathstroke",
@@ -183,8 +233,8 @@ const allCharaters = [
       speed: 210,
       energy: 300,
     },
-    moveSetArray: ["Kick","bullet burst"],
-    song: ["asset/audio/deathstroke.mp3"]
+    moveSetArray: ["Kick", "bullet burst"],
+    song: ["asset/audio/deathstroke.mp3"],
   },
   //! A CHANGER CAR BON
   {
@@ -200,8 +250,24 @@ const allCharaters = [
       speed: 210,
       energy: 300,
     },
-    moveSetArray: ["Kick","bullet burst"],
-    song: ["asset/audio/deathstroke.mp3"]
+    moveSetArray: ["Kick", "bullet burst"],
+    song: ["asset/audio/deathstroke.mp3"],
+  },
+  {
+    name: "demon_king_human",
+    img: "asset/img/demon_king_human.png",
+    spritSheet: "",
+    stats: {
+      hp: 400,
+      atk: 10,
+      def: 100,
+      spAtk: 10,
+      spdef: 100,
+      speed: 180,
+      energy: 2000,
+    },
+    moveSetArray: ["Kick", "bullet burst"],
+    song: ["asset/audio/deathstroke.mp3"],
   },
 ];
 // CHARACTER END
@@ -225,12 +291,12 @@ const allMove = [
     style: "spAtk",
     cost: 150,
     add: {},
-    img:{
-      sprite:"asset/img/kamehameha.png",
+    img: {
+      sprite: "asset/img/kamehameha.png",
       yMin: 200,
       yMax: 3000,
     },
-    position: "y"
+    position: "y",
   },
   {
     name: "Rasengan",
@@ -240,11 +306,11 @@ const allMove = [
     cost: 150,
     add: {},
     img: {
-      sprite:"asset/img/rasengan.png",
+      sprite: "asset/img/rasengan.png",
       xMin: 80,
-      xMax: 80*4,
+      xMax: 80 * 4,
     },
-    position: "x"
+    position: "x",
   },
   {
     name: "Gatling",
@@ -253,12 +319,12 @@ const allMove = [
     style: "atk",
     cost: 100,
     add: {},
-    img:{
-      sprite:"asset/img/gatling.png",
+    img: {
+      sprite: "asset/img/gatling.png",
       yMin: 200,
       yMax: 1800,
     },
-    position: "y"
+    position: "y",
   },
   {
     name: "bullet burst",
@@ -334,10 +400,9 @@ let enemy;
 let infoFight = [];
 let battle;
 let revealingText;
-let eventsTransition
+let eventsTransition;
 let battleSong;
-let heroSong
-
+let heroSong;
 
 // GAME INITIALIZE
 // game = new Game(eventsArray);

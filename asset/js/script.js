@@ -27,7 +27,6 @@ function loadEvent() {
 
   //If u are dead =>
   if (game.life === 0) {
-
     eventsTransition.fadeOut();
     menuGameElement.classList.remove("show");
     menuEndElement.classList.add("show");
@@ -35,14 +34,34 @@ function loadEvent() {
     btnResetElement.addEventListener("click", () => {
       menuEndElement.classList.remove("show");
       killLife.innerHTML = "";
+
       game.mainTheme.pause();
       game.mainTheme.currentTime = 0;
       menuStartElement.classList.add("show");
 
       // loadEvent();
     });
-    // If u are alive
-  } else {
+    // If u are alive and win 3 times
+  } else if (game.roundWin === 3) {
+    eventsTransition.fadeOut();
+    menuGameElement.classList.remove("show");
+    menuEndElement.classList.add("show");
+    endTitle = document.getElementById("end-title");
+    endTitle.innerText = "YOU WIN";
+    endTitle.style.color = "green";
+
+    btnResetElement.addEventListener("click", () => {
+      endTitle.innerText = "YOU LOOSE";
+      endTitle.style.color = "red";
+      menuEndElement.classList.remove("show");
+      killLife.innerHTML = "";
+      game.mainTheme.pause();
+      game.mainTheme.currentTime = 0;
+      menuStartElement.classList.add("show");
+    });
+  }
+  // If u are alive
+  else {
     switch (game.events[game.indexEvent].type) {
       // ! Story Event
       case "story":
@@ -104,7 +123,7 @@ function loadEvent() {
       //   ! Character Choice Event
       case "character choice":
         eventsTransition.fadeOut();
-        
+
         storyElement.classList.add("story-container");
         // create History Title and Add
         storyTitle = document.createElement("h2");
@@ -175,17 +194,16 @@ function loadEvent() {
       //   ! Character Talking Event
       case "character talking":
         eventsTransition.fadeOut();
-        if(heroSong && game.events[game.indexEvent].song){
-          heroSong.play();
+        if (heroSong && game.events[game.indexEvent].song && heroSong.getAttribute("src") === game.events[game.indexEvent].song[0]) {
+              heroSong.play();
         }
-        else if (game.events[game.indexEvent].song) {
+        else if(game.events[game.indexEvent].song) {
           game.mainTheme.pause();
           heroSong = new Audio(game.events[game.indexEvent].song[0]);
           heroSong.volume = 0.1;
           heroSong.loop = true;
           heroSong.play();
-        }
-        else{
+        } else {
           game.mainTheme.play();
         }
         //   Div container Character Talking initialize
@@ -279,7 +297,10 @@ function loadEvent() {
             findenemy[0].song
           );
         }
-
+        enemyRealName = enemy.name.replace("_", " ");
+        while (enemyRealName.includes("_")) {
+          enemyRealName = enemyRealName.replace("_", " ");
+        }
         let fightStageHeroImage = document.createElement("img");
         let fightStageEnemyImage = document.createElement("img");
         battle = new Battle(
@@ -291,7 +312,8 @@ function loadEvent() {
           enemyLifeRemaining,
           fightStageHeroImage,
           fightStageEnemyImage,
-          fightStageHero
+          fightStageHero,
+          `${enemyRealName} wants to fight`
         );
 
         //NAME AND LIFE HERO
@@ -301,8 +323,9 @@ function loadEvent() {
         battle.updateLifeBar(battle.heroLifeRemaining);
 
         //NAME AND LIFE ENEMY
+
         enemyLifeName.innerText =
-          battle.enemy.name[0].toUpperCase() + battle.enemy.name.slice(1);
+          enemyRealName[0].toUpperCase() + enemyRealName.slice(1);
         battle.updateLifeBar(battle.enemyLifeRemaining);
 
         fightStageHero.append(fightStageHeroImage);

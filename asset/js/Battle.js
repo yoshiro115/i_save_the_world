@@ -8,7 +8,8 @@ class Battle {
     enemyLifeRemaining,
     fightStageHeroImage,
     fightStageEnemyImage,
-    fightStageHero
+    fightStageHero,
+    message
   ) {
     this.teamHeros = teamHeros;
     this.enemy = enemy;
@@ -19,7 +20,7 @@ class Battle {
     this.heroLifePercentage =
       this.currentHero.currentHp / this.currentHero.stats.hp;
     this.enemyLifePercentage = this.enemy.currentHp / this.enemy.stats.hp;
-    this.message = `${this.enemy.name} wants to fight`;
+    this.message = message;
     this.heroLifeName = heroLifeName;
     this.enemyLifeName = enemyLifeName;
     this.heroLifeRemaining = heroLifeRemaining;

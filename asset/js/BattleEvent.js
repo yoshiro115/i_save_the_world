@@ -1,33 +1,41 @@
 class BattleEvent {
-    constructor(caster, enemy, skillUse) {
-      this.caster = caster;
-      this.enemy = enemy;
-      this.skillUse = skillUse;
+  constructor(caster, enemy, skillUse) {
+    this.caster = caster;
+    this.enemy = enemy;
+    this.skillUse = skillUse;
+  }
+
+  update() {
+    let realNameCaster = this.caster.name.replace("_", " ");
+    let realNameEnemy = this.enemy.name.replace("_", " ");
+    while (realNameCaster.includes("_")) {
+      realNameCaster = realNameCaster.replace("_", " ");
     }
-  
-    update() {
-      if (this.kill()) {
-        this.enemy.currentHp = 0;
-        this.endBattle = true;
-        return `${this.caster.name} use ${this.skillUse.name} on ${this.enemy.name} and ${this.enemy.name} has been deafeted`;
-      } else {
-        this.enemy.currentHp -=
-          this.skillUse.power * (this.caster.stats[this.skillUse.style] / 100);
-        return `${this.caster.name} use ${this.skillUse.name} on ${this.enemy.name}`;
-      }
+    while (realNameEnemy.includes("_")) {
+      realNameEnemy = realNameEnemy.replace("_", " ");
     }
-  
-    kill() {
-      // console.log(this.enemy.currentHp -
-      //   this.skillUse.power * (this.caster.stats[this.skillUse.style] / 100))
-      if (
-        this.enemy.currentHp -
-          this.skillUse.power * (this.caster.stats[this.skillUse.style] / 100) <=
-        0
-      ) {
-        return true;
-      } else {
-        return false;
-      }
+    if (this.kill()) {
+      this.enemy.currentHp = 0;
+      this.endBattle = true;
+      return `${realNameCaster} use ${this.skillUse.name} on ${realNameEnemy} and ${realNameEnemy} has been deafeted`;
+    } else {
+      this.enemy.currentHp -=
+        this.skillUse.power * (this.caster.stats[this.skillUse.style] / 100);
+      return `${realNameCaster} use ${this.skillUse.name} on ${realNameEnemy}`;
     }
   }
+
+  kill() {
+    // console.log(this.enemy.currentHp -
+    //   this.skillUse.power * (this.caster.stats[this.skillUse.style] / 100))
+    if (
+      this.enemy.currentHp -
+        this.skillUse.power * (this.caster.stats[this.skillUse.style] / 100) <=
+      0
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
