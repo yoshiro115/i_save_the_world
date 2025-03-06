@@ -1,13 +1,20 @@
+// Start Button
 btnStartElement.addEventListener("click", () => {
+  //show the right Container/ Hide The Start Container
   menuStartElement.classList.remove("show");
   menuGameElement.classList.add("show");
+  //Show Life And KiLL
   killLife.classList.add("show");
+  //Start The game
   game = new Game(eventsArray);
+  //Create Object Transition
   eventsTransition = new EventsTransition();
   eventsTransition.init(menuGameElement);
+  //start the maintheme game song
   game.mainTheme.play();
   game.mainTheme.loop = true;
-  console.log((killLife.innerHTML = game.stat()));
+  // console.log((killLife.innerHTML = game.stat()));
+  //launch events Function (why this fonction is not inside the object Events....)
   loadEvent();
 });
 
@@ -17,7 +24,10 @@ btnStartElement.addEventListener("click", () => {
 //Function
 function loadEvent() {
   killLife.innerHTML = game.stat();
+
+  //If u are dead =>
   if (game.life === 0) {
+
     eventsTransition.fadeOut();
     menuGameElement.classList.remove("show");
     menuEndElement.classList.add("show");
@@ -31,12 +41,14 @@ function loadEvent() {
 
       // loadEvent();
     });
+    // If u are alive
   } else {
     switch (game.events[game.indexEvent].type) {
       // ! Story Event
       case "story":
       case "relax":
         eventsTransition.fadeOut();
+        //if i let u take a break
         if (game.events[game.indexEvent].type === "relax") {
           game.hpRecovery();
         }
