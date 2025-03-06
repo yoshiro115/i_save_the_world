@@ -178,7 +178,7 @@ const allMove = [
     cost: 100,
     add: {},
     img:{
-      sprite:"asset/img/Gatling.png",
+      sprite:"asset/img/gatling.png",
       yMin: 200,
       yMax: 1800,
     },
