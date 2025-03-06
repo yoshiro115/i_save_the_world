@@ -221,7 +221,6 @@ function loadEvent() {
 
       //   ! Fight Event
       case "fight":
-        //! create all element START
         eventsTransition.fadeOut();
         if (game.events[game.indexEvent].song) {
           game.mainTheme.pause();
@@ -231,33 +230,11 @@ function loadEvent() {
           battleSong.play();
         }
 
-        // fight div container create and add
-        // fightDivContainer = document.createElement('div');
-        // menuGameElement.append(fightDivContainer);
-
-        // Life container for both player and add inside fightDivContainer
-        // lifeDivContainer = document.createElement('div');
-        // fightDivContainer.append(lifeDivContainer);
-
-        // life container player1 = hero
-        // heroLifeDivContainer = document.createElement('div')
-        // ! create all element END
-
-        // ! add fight class
-        // reinitilize backgroundImage Game element container
-        // menuGameElement.style.backgroundImage = "none";
-
         // fightContainer show and add Background
         fightContainer.classList.add("show");
         figtMenuContainer.classList.add("show");
         fightContainer.style.backgroundImage =
           "url(" + game.events[game.indexEvent].img[0] + ")";
-        // console.log(fightContainer.style.backgroundImage);
-
-        // initialize player
-        // if (!heroInBattle) {
-        //   heroInBattle = game.hero[0];
-        // }
 
         if (!enemy) {
           let findenemy = allCharaters.filter(
@@ -293,17 +270,11 @@ function loadEvent() {
           battle.currentHero.name[0].toUpperCase() +
           battle.currentHero.name.slice(1);
         battle.updateLifeBar(battle.heroLifeRemaining);
-        // let heroLifePercentage = battle.currentHero.currentHp / battle.currentHero.stats.hp;
-        // heroLifeRemaining.style.width = battle.heroLifePercentage * 200 + "px";
-        // heroLifeRemaining.style.backgroundColor = lifeColor(battle.heroLifePercentage);
 
         //NAME AND LIFE ENEMY
         enemyLifeName.innerText =
           battle.enemy.name[0].toUpperCase() + battle.enemy.name.slice(1);
         battle.updateLifeBar(battle.enemyLifeRemaining);
-        // let enemyLifePercentage = enemy.currentHp / enemy.stats.hp;
-        // enemyLifeRemaining.style.width = battle.enemyLifePercentage * 200 + "px";
-        // enemyLifeRemaining.style.backgroundColor = lifeColor(battle.enemyLifePercentage);
 
         fightStageHero.append(fightStageHeroImage);
         fightStageHeroImage.setAttribute("src", battle.currentHero.img);
@@ -314,160 +285,11 @@ function loadEvent() {
         fightMenuMessage.innerText = battle.message;
         fightMenuMessage.classList.add("show");
 
-        // else if (infoFight.length !== 0) {
-        //   setTimeout(()=> {
-        //     fightMenuMessage.innerText = infoFight[0];
-        //     fightMenuMessage.classList.add("show");
-        //   }, 50)
-        //   setTimeout(()=> {
-        //           if (Object.keys(infoFight[1])[0] === "hero") {
-        //           enemy.currentHp -= infoFight[1].hero;
-        //           if (enemy.currentHp <= 0) {
-        //             enemyLifeRemaining.style.width = 0 + "px";
-        //             fightMenuMessage.innerText = "you defeat the enemy";
-        //           }else {
-        //                       enemyLifePercentage = enemy.currentHp / enemy.stats.hp;
-        //                       enemyLifeRemaining.style.width =
-        //                         enemyLifePercentage * 200 + "px";
-        //                       enemyLifeRemaining.style.backgroundColor =
-        //                         lifeColor(enemyLifePercentage);
-        //         }
-        //       }else{
-        //         heroInBattle.currentHp -= infoFight[1].enemy;
-        //           if (heroInBattle.currentHp <= 0) {
-        //             heroLifeRemaining.style.width = 0 + "px";
-        //           } else {
-        //             heroLifePercentage =
-        //               heroInBattle.currentHp / heroInBattle.stats.hp;
-        //             heroLifeRemaining.style.width =
-        //               heroLifePercentage * 200 + "px";
-        //             heroLifeRemaining.style.backgroundColor =
-        //               lifeColor(heroLifePercentage);
-        //           }
-        //       }
-        //   }, 1000)
-        //   setTimeout(()=> {
-        //     fightMenuMessage.innerText = infoFight[2];
-        //     fightMenuMessage.classList.add("show");
-        //   }, 2000)
-        //   setTimeout(()=> {
-        //     if (Object.keys(infoFight[3])[0] === "hero") {
-        //     enemy.currentHp -= infoFight[3].hero;
-        //     if (enemy.currentHp <= 0) {
-        //       enemyLifeRemaining.style.width = 0 + "px";
-        //       fightMenuMessage.innerText = "you defeat the enemy";
-        //     }else {
-        //                 enemyLifePercentage = enemy.currentHp / enemy.stats.hp;
-        //                 enemyLifeRemaining.style.width =
-        //                   enemyLifePercentage * 200 + "px";
-        //                 enemyLifeRemaining.style.backgroundColor =
-        //                   lifeColor(enemyLifePercentage);
-        //   }
-        // }else{
-        //   heroInBattle.currentHp -= infoFight[3].enemy;
-        //     if (heroInBattle.currentHp <= 0) {
-        //       heroLifeRemaining.style.width = 0 + "px";
-        //     } else {
-        //       heroLifePercentage =
-        //         heroInBattle.currentHp / heroInBattle.stats.hp;
-        //       heroLifeRemaining.style.width =
-        //         heroLifePercentage * 200 + "px";
-        //       heroLifeRemaining.style.backgroundColor =
-        //         lifeColor(heroLifePercentage);
-        //     }
-        // }
-        // }, 3000)
-        // setTimeout(()=> {
-        //   fightMenuMessage.classList.remove("show");
-        //   infoFight = [];
-        //   fightMenuChoice.classList.add("show");
-        // }, 4000)
-        // for(let i=0; i< infoFight.length; i++){
-        // // infoFight.forEach((info, key) => {
-        //   const test = setTimeout(() => {
-        //     // console.log(infoFight[i])
-        //     if (typeof infoFight[i] === "string") {
-        //       fightMenuMessage.innerText = infoFight[i];
-        //       fightMenuMessage.classList.add("show");
-        //     } else {
-        //       // console.log(Object.keys(infoFight[i])[0]);
-        //       if (Object.keys(infoFight[i])[0] === "hero") {
-        //         enemy.currentHp -= infoFight[i].hero;
-        //         if (enemy.currentHp <= 0) {
-        //           enemyLifeRemaining.style.width = 0 + "px";
-        //           fightMenuMessage.innerText = "you defeat the enemy";
-
-        //         } else {
-        //           enemyLifePercentage = enemy.currentHp / enemy.stats.hp;
-        //           enemyLifeRemaining.style.width =
-        //             enemyLifePercentage * 200 + "px";
-        //           enemyLifeRemaining.style.backgroundColor =
-        //             lifeColor(enemyLifePercentage);
-        //         }
-
-        //         // infoFight.shift();
-        //         // loadEvent();
-        //       } else {
-        //         heroInBattle.currentHp -= infoFight[i].enemy;
-        //         if (heroInBattle.currentHp <= 0) {
-        //           heroLifeRemaining.style.width = 0 + "px";
-        //         } else {
-        //           heroLifePercentage =
-        //             heroInBattle.currentHp / heroInBattle.stats.hp;
-        //           heroLifeRemaining.style.width =
-        //             heroLifePercentage * 200 + "px";
-        //           heroLifeRemaining.style.backgroundColor =
-        //             lifeColor(heroLifePercentage);
-        //         }
-
-        //         // infoFight.shift();
-        //         // loadEvent();
-        //       }
-        //     }
-        //     // fightMenuMessage.classList.remove("show");
-        //   }, 1000 * i);
-
-        //   if (
-        //     enemy.currentHp <= 0
-        //   ) {
-
-        //     clearTimeout(test)
-        //     // break;
-        //     setTimeout(() => {
-        //       enemyLifeName.remove();
-        //       enemyLifeRemaining.remove();
-        //       fightStageHeroEnemy.remove();
-        //     }, 1000);
-        //   }
-        // };
-
-        //   setTimeout(() => {
-        //     fightMenuMessage.classList.remove("show");
-        //     infoFight = [];
-        //     // console.log(!infoFight);
-        //     if (infoFight.length === 0) {
-        //       fightMenuChoice.classList.add("show");
-        //     }
-        //     loadEvent();
-        //   }, 4000);
-
-        // }
-
-        // fightMenuMessage.addEventListener("click", () => {
-        // if (infoFight.length !== 0) {
-        //   // fightMenuMessage.classList.remove("show");
-        //   loadEvent();
-        // } else {
-        // if (battle.winner) {
-        //   fightMenuMessage.innerText = `${battle.winner.name.toUpperCase()} WIN`;
-        // }
         setTimeout(() => {
           fightMenuMessage.classList.remove("show");
           fightMenuChoice.classList.add("show");
         }, 1500);
 
-        // }
-        // });
         let fightMenuSkillHero = document.createElement(
           "fight-menu-skill-hero"
         );
@@ -476,19 +298,15 @@ function loadEvent() {
         fightMenuSkill.addEventListener("click", () => {
           fightMenuChoice.classList.remove("show");
           fightMenuSkillHero.classList.add("show");
-          // console.log( heroInBattle.moveSet)
-          // for(i=0; i<4; i++){
-          // console.log(fightMenuSkillHero.childNodes.length !==
-          // battle.currentHero.moveSet.length, fightMenuSkillHero.childNodes.length)
+
           if (fightMenuSkillHero.childNodes.length === 0) {
             battle.currentHero.moveSet.forEach((skill) => {
-              // console.log(skill)
               const oneSkill = document.createElement("button");
               fightMenuSkillHero.append(oneSkill);
               oneSkill.classList.add("fight-menu-skill-hero-one");
-              // if(heroInBattle.moveSet[i]){
+
               oneSkill.innerText = skill.name;
-              // }
+
               oneSkill.addEventListener("click", () => {
                 fightMenuSkillHero.classList.remove("show");
                 fightMenuBtnPrevious.remove();
@@ -519,7 +337,6 @@ function loadEvent() {
                   battle.endTurn();
                 }, 3000);
 
-                // console.log(battle.winner)
                 setTimeout(() => {
                   if (battle.winner) {
                     if (battleSong) {
@@ -554,7 +371,7 @@ function loadEvent() {
                       battle.enemy.songName.play();
                       setTimeout(() => {
                         game.life--;
-                        // game.indexEvent++;
+
                         game.indexEvent++;
                         figtMenuContainer.classList.remove("show");
                         fightContainer.classList.remove("show");
@@ -562,33 +379,23 @@ function loadEvent() {
                         fightMenuChoice.classList.remove("show");
                         fightMenuSkillHero.classList.remove("show");
                         fightMenuSkillHero.remove();
-                        // console.log(fightMenuSkillHero)
+
                         fightStageHeroImage.remove();
                         fightStageEnemyImage.remove();
                         eventsTransition.init(menuGameElement);
-                        // console.log(fightStageHeroImage)
-                        enemy = 0;
 
-                        // console.log(fightContainer.classList.contains("show"))
-                        // loadEvent();
+                        enemy = 0;
                       }, 1000);
                       setTimeout(() => {
-                        //   // game.life--;
                         loadEvent();
-                        //   // console.log(fightContainer.classList.contains("show"))
-
-                        //   // console.log(fightContainer.classList.contains("show"))
                       }, 1007);
                     }
                   }
                 }, 3000);
-                // console.log(battle.winner);
-                // loadEvent();
               });
             });
           }
 
-          // console.log(previous.no);
           if (previous.childNodes.length === 0) {
             fightMenuBtnPrevious = document.createElement("button");
             previous.append(fightMenuBtnPrevious);
@@ -602,7 +409,6 @@ function loadEvent() {
             });
           }
         });
-        // if(fightMenuMessage)
 
         break;
     }

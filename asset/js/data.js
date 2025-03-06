@@ -56,8 +56,10 @@ eventsArray = [
   {
     title: "Someone approaching",
     type: "story",
-    text: "You awaken to the blinding light of a hero’s presence, their silhouette framed against a sky torn apart by chaos. Their voice cuts through the air like thunder — urgent, commanding, impossible to ignore. The world stands at the edge of destruction, and you have no choice but to rise. The planet itself has just roared in pain, shaken by a tremor so powerful it split the earth and cracked the sky. Destiny has ripped you from your slumber, and now, whether you are ready or not, you must become the blade that carves a path through the storm.Suddenly, the wind shifted. The warm air turned cold, and the ground trembled faintly beneath you. A dark aura began to rise from the horizon",
-    img: ["asset/img/crater.jpg"],
+    text: "You awaken to the blinding light of a hero’s presence, their silhouette framed against a sky torn apart by chaos. Their voice cuts through the air like thunder — urgent, commanding, impossible to ignore. The world stands at the edge of destruction, and you have no choice but to rise. The planet itself has just roared in pain, shaken by a tremor so powerful it split the earth and cracked the sky. Destiny has ripped you from your slumber, and now, whether you are ready or not, you must become the blade that carves a path through the storm.Suddenly, the wind shifted. The warm air turned cold, and the ground trembled faintly beneath you. A dark aura began to rise from the horizon.",
+    img: ["asset/img/night_desert.jpg"],
+  },{
+
   }
 ];
 
