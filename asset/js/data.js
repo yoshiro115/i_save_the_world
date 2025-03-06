@@ -51,7 +51,7 @@ eventsArray = [
     title: "First break",
     type: "relax",
     text: "The rest is short-lived, but gets you back on your feet. enjoy it, it won't always be the case.",
-    img: ["asset/img/relax.gif"],
+    img: ["asset/img/relax.gif",],
   },
   {
     title: "Someone approaching",
@@ -59,8 +59,53 @@ eventsArray = [
     text: "You awaken to the blinding light of a hero’s presence, their silhouette framed against a sky torn apart by chaos. Their voice cuts through the air like thunder — urgent, commanding, impossible to ignore. The world stands at the edge of destruction, and you have no choice but to rise. The planet itself has just roared in pain, shaken by a tremor so powerful it split the earth and cracked the sky. Destiny has ripped you from your slumber, and now, whether you are ready or not, you must become the blade that carves a path through the storm.Suddenly, the wind shifted. The warm air turned cold, and the ground trembled faintly beneath you. A dark aura began to rise from the horizon.",
     img: ["asset/img/night_desert.jpg"],
   },{
-
+    title: "Stay on guard",
+    type:"character talking",
+    text: "I feel an evil aura approaching us, stay on guard",
+    img: ['asset/img/night_desert.jpg']
   }
+  ,{
+    title: "Father FIRST TIME",
+    type:"character talking",
+    text: "Well, these heroes are still alive!So Deathstroke was useless, like all Marvel villains.",
+    img: ['asset/img/night_desert.jpg','asset/img/father.png'],
+    song: ["asset/audio/zoldyck.mp3"]
+  },{
+    title: "Father FIRST TIME2",
+    type:"character talking",
+    text: "Himiko, please don't disappoint me",
+    img: ['asset/img/night_desert.jpg','asset/img/father.png'],
+    song: ["asset/audio/zoldyck.mp3"]
+  },{
+    title: "Himiko",
+    type:"character talking",
+    text: "New blood at last. I think we're gonna have a lot of fun together. I can't wait to be you.",
+    img: ['asset/img/night_desert.jpg','asset/img/himiko.png'],
+    song: ["asset/audio/zoldyck.mp3"]
+  },{
+    title: "Father FIRST TIME3",
+    type:"character talking",
+    text: "Bring me their heads, and we can finally decorate the base.",
+    img: ['asset/img/night_desert.jpg','asset/img/father.png'],
+    song: ["asset/audio/zoldyck.mp3"]
+  },{
+    title: "Himiko2",
+    type:"character talking",
+    text: "Sire, yes sire.\n You're so cute, let me give you a hug",
+    img: ['asset/img/night_desert.jpg','asset/img/himiko.png'],
+    song: ["asset/audio/zoldyck.mp3"]
+  },{
+    title: "Stay on guard",
+    type:"character talking",
+    text: "You really think you have a chance of beating us.",
+    img: ['asset/img/night_desert.jpg']
+  },{
+    title: "Himiko Battle",
+    type: "fight",
+    text: "himiko",
+    img: ["asset/img/mapFight1.jpg"],
+    song: ["asset/audio/battle_fire_spirit.mp3"]
+  },
 ];
 
 let events = [];
@@ -128,6 +173,23 @@ const allCharaters = [
   {
     name: "deathstroke",
     img: "asset/img/deathstroke.png",
+    spritSheet: "",
+    stats: {
+      hp: 200,
+      atk: 300,
+      def: 100,
+      spAtk: 300,
+      spdef: 100,
+      speed: 210,
+      energy: 300,
+    },
+    moveSetArray: ["Kick","bullet burst"],
+    song: ["asset/audio/deathstroke.mp3"]
+  },
+  //! A CHANGER CAR BON
+  {
+    name: "himiko",
+    img: "asset/img/himiko.png",
     spritSheet: "",
     stats: {
       hp: 200,
@@ -274,6 +336,7 @@ let battle;
 let revealingText;
 let eventsTransition
 let battleSong;
+let heroSong
 
 
 // GAME INITIALIZE

@@ -104,6 +104,7 @@ function loadEvent() {
       //   ! Character Choice Event
       case "character choice":
         eventsTransition.fadeOut();
+        
         storyElement.classList.add("story-container");
         // create History Title and Add
         storyTitle = document.createElement("h2");
@@ -174,6 +175,19 @@ function loadEvent() {
       //   ! Character Talking Event
       case "character talking":
         eventsTransition.fadeOut();
+        if(heroSong && game.events[game.indexEvent].song){
+          heroSong.play();
+        }
+        else if (game.events[game.indexEvent].song) {
+          game.mainTheme.pause();
+          heroSong = new Audio(game.events[game.indexEvent].song[0]);
+          heroSong.volume = 0.1;
+          heroSong.loop = true;
+          heroSong.play();
+        }
+        else{
+          game.mainTheme.play();
+        }
         //   Div container Character Talking initialize
         characterDivImg = document.createElement("div");
         menuGameElement.append(characterDivImg);
@@ -214,6 +228,9 @@ function loadEvent() {
         storyNextBtn.addEventListener("click", () => {
           if (revealingText.isDone) {
             // index Event increase
+            if (heroSong) {
+              heroSong.pause();
+            }
             game.indexEvent++;
             // remove created element
             menuGameElement.childNodes.length = 0;
